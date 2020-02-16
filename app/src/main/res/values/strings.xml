@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TitShop</string>
+    <string name="logo">fancy</string>
+    <string name="login">Login</string>
+    <string name="describe">Best fashion Shopping app</string>
+    <string name="loginEmail">Sign Up with Email</string>
+    <string name="loginFacebook">Continue with Facebook</string>
 </resources>
