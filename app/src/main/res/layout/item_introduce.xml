@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="introduce"
+            type="com.example.titshop.model.Introduce" />
+    </data>
+    <androidx.cardview.widget.CardView
+        bind:cardCornerRadius="@dimen/margin_15dp_"
+        bind:cardElevation="@dimen/margin_10dp_"
+        bind:cardUseCompatPadding="true"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:src="@drawable/ic_launcher_foreground"
+            bind:imageUrl="@{introduce.urlImage}"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
+</layout>

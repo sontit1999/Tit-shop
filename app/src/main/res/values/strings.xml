@@ -5,4 +5,8 @@
     <string name="describe">Best fashion Shopping app</string>
     <string name="loginEmail">Sign Up with Email</string>
     <string name="loginFacebook">Continue with Facebook</string>
+    <string name="swipe">Swipe to brower</string>
+    <string name="discover">Discover products easily by swipe from one catetogy to another</string>
+    <string name="startShopping">Start Shopping</string>
+    <string name="alreadyacount">Already have account ?</string>
 </resources>

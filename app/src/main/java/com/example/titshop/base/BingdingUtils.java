@@ -22,10 +22,16 @@ public class BingdingUtils {
         Glide
                 .with(view.getContext())
                 .load(imageUrl)
-                .override(500,250)
                 .into(view);
 
+    }
+    @BindingAdapter({"bind:imageUrlResize"})
+    public static void loadImageResize(ImageView view, String imageUrl) {
+        Glide
+                .with(view.getContext())
+                .load(imageUrl)
+                .override(500,500)
+                .into(view);
 
     }
-
 }
