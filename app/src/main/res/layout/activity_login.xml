@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="login"
+            type="com.example.titshop.ui.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login.LoginActivity"
+        android:background="#e6ded7">
+
+        <TextView
+            android:id="@+id/txt_account"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Log into\nyour account"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <RelativeLayout
+            android:id="@+id/layout_login"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/txt_account"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/custom_layout">
+
+            <TextView
+                android:id="@+id/txt_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="15sp"
+                android:layout_marginLeft="10dp" />
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="15sp"
+                android:background="@drawable/custom_layout"
+                android:layout_below="@+id/txt_email"/>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#696969"
+                android:layout_below="@+id/edt_email"/>
+
+            <EditText
+                android:id="@+id/edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@+id/view"
+                android:hint="Password"
+                android:textSize="15sp"
+                android:background="@drawable/custom_layout"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/txt_forgot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot?"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="65dp"
+                android:layout_marginRight="20dp"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:textColor="#ffffff"
+            android:background="@drawable/custom_btn_login"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/layout_login"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/txt_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Or sign up with social account"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"/>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txt_sign_up"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp">
+
+            <RelativeLayout
+                android:id="@+id/layout_facebook_login"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:background="@drawable/custom_img_fb"
+                android:paddingHorizontal="50dp"
+                android:paddingVertical="10dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/facebook"
+                    android:tint="#ffffff"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_skype_login"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:background="@drawable/custom_img_skype"
+                android:paddingHorizontal="50dp"
+                android:paddingVertical="10dp"
+                android:layout_marginLeft="20dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_skype"
+                    android:tint="#ffffff"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
