@@ -49,7 +49,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/tvLogin"
-            android:onClick="@{(view)->viewmodel.Login(view)}"
             android:textColor="@color/colorBlack"
             android:textStyle="bold"
             android:text="@string/login"

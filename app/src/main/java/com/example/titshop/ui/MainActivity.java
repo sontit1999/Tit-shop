@@ -1,11 +1,13 @@
 package com.example.titshop.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.titshop.R;
 import com.example.titshop.base.BaseActivity;
 import com.example.titshop.databinding.ActivityMainBinding;
+import com.example.titshop.ui.login.LoginActivity;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> {
 
@@ -29,13 +31,19 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         binding.llLoginFb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               viewmodel.LoginWithFb(MainActivity.this);
+                Toast.makeText(MainActivity.this, "Login fb", Toast.LENGTH_SHORT).show();
             }
         });
         binding.llLoginEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewmodel.LoginWithEmail(MainActivity.this);
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            }
+        });
+        binding.tvLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
             }
         });
     }
