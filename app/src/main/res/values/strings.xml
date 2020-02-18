@@ -2,6 +2,11 @@
     <string name="app_name">TitShop</string>
     <string name="logo">fancy</string>
     <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="forgot">Forgot ?</string>
+    <string name="Orlogin">Or sign up with social account</string>
+    <string name="loginintoaccount">Log into \nyour account</string>
     <string name="describe">Best fashion Shopping app</string>
     <string name="loginEmail">Sign Up with Email</string>
     <string name="loginFacebook">Continue with Facebook</string>

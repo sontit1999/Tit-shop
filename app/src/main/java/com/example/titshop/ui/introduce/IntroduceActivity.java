@@ -10,6 +10,7 @@ import com.example.titshop.base.BaseActivity;
 import com.example.titshop.databinding.ActivityIntroduceBinding;
 import com.example.titshop.model.Introduce;
 import com.example.titshop.ui.MainActivity;
+import com.example.titshop.ui.login.LoginActivity;
 
 import java.util.ArrayList;
 
@@ -42,7 +43,7 @@ public class IntroduceActivity extends BaseActivity<ActivityIntroduceBinding,Int
         binding.tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(IntroduceActivity.this, "Chuyển đến màn login", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(IntroduceActivity.this, LoginActivity.class));
             }
         });
         binding.btnShopping.setOnClickListener(new View.OnClickListener() {
