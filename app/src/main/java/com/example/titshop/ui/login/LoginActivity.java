@@ -8,6 +8,7 @@ import com.example.titshop.R;
 import com.example.titshop.base.BaseActivity;
 import com.example.titshop.databinding.ActivityLoginBinding;
 import com.example.titshop.ui.forgotpass.ForgotActivity;
+import com.example.titshop.ui.home.HomeActivity;
 
 public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewModel> {
 
@@ -32,7 +33,9 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "Login success", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
 
