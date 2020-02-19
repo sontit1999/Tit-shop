@@ -39,5 +39,11 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding,Regis
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
+        binding.ibBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }
