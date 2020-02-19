@@ -8,5 +8,6 @@
     <color name="colorGrey">#B6ADAD</color>
     <color name="colorYellow">#FFEE58</color>
     <color name="colorRed">#FA0202</color>
+    <color name="colorbgLoginRegister">#e6ded7</color>
     <color name="colorBlueLight">#42A5F5</color>
 </resources>
