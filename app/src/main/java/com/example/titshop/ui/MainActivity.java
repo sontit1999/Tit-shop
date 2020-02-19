@@ -8,6 +8,7 @@ import com.example.titshop.R;
 import com.example.titshop.base.BaseActivity;
 import com.example.titshop.databinding.ActivityMainBinding;
 import com.example.titshop.ui.login.LoginActivity;
+import com.example.titshop.ui.register.RegisterActivity;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> {
 
@@ -37,7 +38,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         binding.llLoginEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
             }
         });
         binding.tvLogin.setOnClickListener(new View.OnClickListener() {

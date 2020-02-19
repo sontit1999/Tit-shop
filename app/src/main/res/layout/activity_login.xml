@@ -13,7 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.login.LoginActivity"
-        android:background="#e6ded7">
+        android:background="@color/colorbgLoginRegister">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHonirataal"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/txt_account"
             android:layout_height="wrap_content"
@@ -25,9 +31,9 @@
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/textview_tittle"
             android:gravity="left"
-            android:layout_marginTop="@dimen/margin_35dp_"
+            android:layout_marginBottom="@dimen/margin_20dp_"
+            app:layout_constraintBottom_toTopOf="@id/layout_login"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
         <LinearLayout
@@ -39,7 +45,7 @@
             android:layout_marginLeft="@dimen/margin_20dp_"
             android:layout_marginRight="@dimen/margin_20dp_"
             android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/txt_account"
+            app:layout_constraintBottom_toTopOf="@id/guidelineHonirataal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:background="@drawable/custom_layout">

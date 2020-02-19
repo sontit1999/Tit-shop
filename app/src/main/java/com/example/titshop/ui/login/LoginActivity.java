@@ -1,11 +1,13 @@
 package com.example.titshop.ui.login;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.titshop.R;
 import com.example.titshop.base.BaseActivity;
 import com.example.titshop.databinding.ActivityLoginBinding;
+import com.example.titshop.ui.forgotpass.ForgotActivity;
 
 public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewModel> {
 
@@ -37,14 +39,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
         binding.txtForgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "Chuyển đến màn hình quên mật khẩu", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        binding.txtSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "Chuyển đến màn hình đăng kí tài khoản", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, ForgotActivity.class));
             }
         });
 
