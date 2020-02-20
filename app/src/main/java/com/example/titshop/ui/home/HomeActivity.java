@@ -33,7 +33,6 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
        binding.setViewmodel(viewmodel);
        setuptToolbar();
        event();
-
     }
 
     private void setuptToolbar() {
