@@ -12,12 +12,15 @@ import androidx.fragment.app.Fragment;
 
 import com.example.titshop.R;
 import com.example.titshop.base.BaseActivity;
+import com.example.titshop.base.BaseFragment;
+import com.example.titshop.callback.ActionbarListener;
 import com.example.titshop.databinding.ActivityHomeBinding;
+import com.example.titshop.fragment.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.zip.Inflater;
 
-public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel> {
+public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel> implements ActionbarListener {
     @Override
     public Class<HomeViewModel> getViewmodel() {
         return HomeViewModel.class;
@@ -33,13 +36,13 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
        binding.setViewmodel(viewmodel);
        setuptToolbar();
        event();
+       // load default fragment
+        rePlaceFragment(new HomeFragment());
     }
 
     private void setuptToolbar() {
         setSupportActionBar(binding.actionBar.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-//        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_more_horiz_black_24dp);
-//        binding.actionBar.toolbar.setOverflowIcon(drawable);
     }
 
     private void event() {
@@ -48,11 +51,10 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.navigationShop:
-                        hiddenIconback();
-                        Toast.makeText(HomeActivity.this, "click shop", Toast.LENGTH_SHORT).show();
+                        hiddenMore();
+                        rePlaceFragment(new HomeFragment());
                         break;
                     case R.id.navigationExplore:
-                        hiddenIconback();
                         Toast.makeText(HomeActivity.this, "click Explore", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.navigationNotification:
@@ -73,10 +75,11 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         });
     }
 
-    private void hiddenIconback() {
-        binding.actionBar.ivIcon.setVisibility(View.GONE);
-        binding.actionBar.title.setVisibility(View.GONE);
+    private void hiddenMore() {
         binding.actionBar.toolbar.getMenu().findItem(R.id.menuMore).setVisible(false);
+    }
+    private void ShowMore() {
+        binding.actionBar.toolbar.getMenu().findItem(R.id.menuMore).setVisible(true);
     }
     private void showIconback() {
         binding.actionBar.ivIcon.setVisibility(View.VISIBLE);
@@ -89,6 +92,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        hiddenMore();
         return true;
     }
 
@@ -107,5 +111,14 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    @Override
+    public void onResumFragment(BaseFragment fragment) {
+        if(fragment instanceof HomeFragment){
+             binding.actionBar.ivIcon.setVisibility(View.GONE);
+             binding.actionBar.title.setText("Shopping");
+        }
+
     }
 }

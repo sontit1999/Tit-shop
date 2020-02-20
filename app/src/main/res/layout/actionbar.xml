@@ -7,7 +7,6 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:background="@color/colorWhite"
@@ -23,7 +22,8 @@
                 android:layout_height="30dp"/>
             <TextView
                 android:id="@+id/title"
-                android:text="back"
+                android:text="home"
+                android:layout_marginLeft="@dimen/margin_20dp_"
                 android:textSize="@dimen/textview_content"
                 android:textColor="@color/colorBlack"
                 android:layout_width="wrap_content"
