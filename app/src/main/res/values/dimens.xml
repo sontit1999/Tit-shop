@@ -16,4 +16,5 @@
     <dimen name="width_item_toptrend">170dp</dimen>
     <dimen name="height_item_toptrend">150dp</dimen>
     <dimen name="size300dp">300dp</dimen>
+    <dimen name="margin_250dp">250dp</dimen>
 </resources>

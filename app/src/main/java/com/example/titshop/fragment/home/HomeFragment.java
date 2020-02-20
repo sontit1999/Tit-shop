@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.example.titshop.adapter.SliderAdapterExample;
 import com.example.titshop.base.BaseFragment;
 import com.example.titshop.callback.ActionbarListener;
 import com.example.titshop.databinding.FragHomeBinding;
+import com.example.titshop.fragment.product.ProductFragment;
 import com.example.titshop.model.Product;
 import com.example.titshop.model.SliderItem;
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -56,6 +58,9 @@ public class HomeFragment extends BaseFragment<FragHomeBinding,HomeFragViewModel
         binding.tvShowAllCollection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                ProductFragment productFragment = new ProductFragment();
+                fragmentManager.beginTransaction().replace(R.id.frameLayout,productFragment).commit();
                 Toast.makeText(getActivity(), "Chuyển sang fragment Collection", Toast.LENGTH_SHORT).show();
             }
         });

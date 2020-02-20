@@ -1,7 +1,7 @@
 package com.example.titshop.model;
 
 public class Introduce {
-    String urlImage;
+    private String urlImage;
 
     public Introduce(String urlImage) {
         this.urlImage = urlImage;
