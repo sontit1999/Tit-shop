@@ -26,6 +26,7 @@
                 android:id="@+id/tvName"
                 android:text="@{product.name}"
                 android:padding="@dimen/margin_5dp_"
+                android:maxLength="30"
                 android:layout_marginTop="@dimen/margin_5dp_"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textview_content"

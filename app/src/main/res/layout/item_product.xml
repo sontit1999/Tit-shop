@@ -54,6 +54,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="30"
                 android:layout_marginRight="@dimen/margin_10dp_"
                 android:layout_marginLeft="@dimen/margin_10dp_"
                 android:layout_below="@id/ivProduct"

@@ -32,7 +32,7 @@ public class ProductFragViewModel extends BaseViewmodel {
         arr.add(new SubProduct("T-shrit ladies", "https://i.pinimg.com/736x/fc/07/d4/fc07d472f7a97762b5e2374446a8543f.jpg", "$24.89", "x", "x", true, 4.5f));
         arr.add(new SubProduct("Big Deal Kevin", "https://ae01.alicdn.com/kf/HTB1MftjbdzvK1RkSnfoq6zMwVXan/KENVY-Brand-Fashion-Women-s-High-end-Luxury-Winter-Contrast-Color-Jacquard-Knitted-Cotton-Casual-Sweater.jpg", "$11.89", "x", "x", true, 4.5f));
         arr.add(new SubProduct("Girl sweammer", "https://d2nikgq6rubtj8.cloudfront.net/web/2019/Sept/04/nav/womens-nav.jpg", "$12.94", "x", "x", true, 4.5f));
-        arr.add(new SubProduct("Sustainable Women's Fashion", "https://ae01.alicdn.com/kf/HTB1YYlaPpXXXXX.XXXXq6xXFXXXx/Wanita-Piyama-Sutra-Celana-Pendek-Tombol-Lengan-Pendek-Kemeja-Dan-Pendek-Set-2016-Musim-Panas-Wanita.jpg", "$99", "x", "x", true, 4.5f));
+        arr.add(new SubProduct("Sustainable Women's Fashion ", "https://ae01.alicdn.com/kf/HTB1YYlaPpXXXXX.XXXXq6xXFXXXx/Wanita-Piyama-Sutra-Celana-Pendek-Tombol-Lengan-Pendek-Kemeja-Dan-Pendek-Set-2016-Musim-Panas-Wanita.jpg", "$99", "x", "x", true, 4.5f));
         arrSubProductCollection.postValue(arr);
         return arrSubProductCollection;
     }
