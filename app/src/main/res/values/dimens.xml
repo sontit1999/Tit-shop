@@ -2,7 +2,7 @@
 <resources>
     <dimen name="textview_content">15sp</dimen>
     <dimen name="textview_small">12sp</dimen>
-    <dimen name="textview_tittle">25sp</dimen>
+    <dimen name="textview_tittle">23sp</dimen>
     <dimen name="textview_tittle_big">45sp</dimen>
     <dimen name="margin_5dp_">5dp</dimen>
     <dimen name="margin_10dp_">10dp</dimen>
@@ -12,4 +12,9 @@
     <dimen name="margin_30dp_">30dp</dimen>
     <dimen name="margin_35dp_">35dp</dimen>
     <dimen name="margin_40dp_">40dp</dimen>
+    <dimen name="size_item_collection">200dp</dimen>
+    <dimen name="width_item_toptrend">170dp</dimen>
+    <dimen name="height_item_toptrend">150dp</dimen>
+    <dimen name="size300dp">300dp</dimen>
+    <dimen name="margin_250dp">250dp</dimen>
 </resources>

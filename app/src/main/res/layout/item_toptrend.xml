@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="product"
+            type="com.example.titshop.model.Product" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        bind:cardUseCompatPadding="true"
+        bind:cardCornerRadius="7dp"
+        bind:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="@dimen/size300dp"
+            android:layout_height="@dimen/height_item_toptrend">
+
+            <ImageView
+                android:id="@+id/ivProduct"
+                android:layout_width="@dimen/height_item_toptrend"
+                android:layout_height="@dimen/height_item_toptrend"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/bg"
+                bind:imageUrl="@{product.imageUrl}"></ImageView>
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5dp_"
+                android:layout_toRightOf="@id/ivProduct"
+                android:padding="@dimen/margin_5dp_"
+                android:text="@{product.name}"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textview_content" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvName"
+                android:layout_toRightOf="@id/ivProduct"
+                android:padding="7dp"
+                android:text="@{product.price}"
+                android:textColor="@color/colorGrey"
+                android:textSize="@dimen/textview_small" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

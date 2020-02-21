@@ -22,4 +22,7 @@
     <string name="yourname">Your name</string>
     <string name="signupfacebook">Sign Up with Facebook</string>
     <string name="signup">Sign Up</string>
+    <string name="showall">Show all</string>
+    <string name="collection">Designer Collection</string>
+    <string name="toptrend">Top Trends</string>
 </resources>
