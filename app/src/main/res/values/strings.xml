@@ -3,6 +3,7 @@
     <string name="logo">fancy</string>
     <string name="login">Login</string>
     <string name="send">Send</string>
+    <string name="search">Search</string>
     <string name="email">Email</string>
     <string name="pass">Password</string>
     <string name="forgot">Forgot ?</string>
@@ -22,6 +23,12 @@
     <string name="yourname">Your name</string>
     <string name="itemfound">7743 items found</string>
     <string name="womanTop">Women \'s Tops</string>
+    <string name="wishlist">Wish List</string>
+    <string name="explore">Explore</string>
+    <string name="womensuit">Women\'s Suit</string>
+    <string name="upto">up to 70% off</string>
+    <string name="upto50">up to 50% off</string>
+    <string name="move">move to bag</string>
     <string name="signupfacebook">Sign Up with Facebook</string>
     <string name="signup">Sign Up</string>
     <string name="showall">Show all</string>
