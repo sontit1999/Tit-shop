@@ -10,19 +10,18 @@
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="7dp"
         card_view:cardElevation="@dimen/margin_5dp_"
         card_view:cardUseCompatPadding="true">
-
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="300dp">
-
+            android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/ivProduct"
-                android:layout_width="@dimen/size_item_collection"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/size_item_collection"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/bg"
@@ -41,23 +40,25 @@
                 android:textSize="8sp" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignRight="@id/ivProduct"
                 android:layout_margin="@dimen/margin_10dp_"
                 android:background="@drawable/bg_circle"
-                android:padding="@dimen/margin_15dp_"
+                android:padding="4dp"
                 android:src="@drawable/ic_favorite_black_24dp"
                 android:tint="@color/colorRed" />
 
 
             <TextView
                 android:id="@+id/tvName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="30"
+                android:layout_marginRight="@dimen/margin_10dp_"
+                android:layout_marginLeft="@dimen/margin_10dp_"
                 android:layout_below="@id/ivProduct"
-                android:layout_marginTop="@dimen/margin_5dp_"
-                android:maxWidth="@dimen/size_item_collection"
+                android:layout_marginTop="@dimen/margin_10dp_"
                 android:padding="@dimen/margin_5dp_"
                 android:text="@{subproduct.name}"
                 android:textColor="@color/colorBlack"
@@ -65,10 +66,12 @@
 
             <TextView
                 android:id="@+id/tvPrice"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp_"
+                android:layout_marginLeft="@dimen/margin_10dp_"
                 android:layout_below="@id/tvName"
-                android:maxWidth="@dimen/size_item_collection"
+                android:layout_marginTop="@dimen/margin_10dp_"
                 android:padding="7dp"
                 android:text="@{subproduct.price}"
                 android:textColor="@color/colorGrey"

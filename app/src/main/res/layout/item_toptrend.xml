@@ -41,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvName"
+                android:maxLength="30"
                 android:layout_toRightOf="@id/ivProduct"
                 android:padding="7dp"
                 android:text="@{product.price}"

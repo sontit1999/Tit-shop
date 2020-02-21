@@ -14,7 +14,7 @@
         card_view:cardElevation="@dimen/margin_5dp_">
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="300dp">
+            android:layout_height="@dimen/heightitemCollection">
             <ImageView
                 android:id="@+id/ivProduct"
                 android:src="@mipmap/bg"
@@ -26,6 +26,7 @@
                 android:id="@+id/tvName"
                 android:text="@{product.name}"
                 android:padding="@dimen/margin_5dp_"
+                android:maxLength="30"
                 android:layout_marginTop="@dimen/margin_5dp_"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textview_content"

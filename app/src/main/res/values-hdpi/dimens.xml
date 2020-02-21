@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--dưới 4 inch-->
+<!--4 inch - 5 inch-->
 <resources>
     <dimen name="textview_content">15sp</dimen>
     <dimen name="textview_small">12sp</dimen>
@@ -13,11 +13,11 @@
     <dimen name="margin_30dp_">30dp</dimen>
     <dimen name="margin_35dp_">35dp</dimen>
     <dimen name="margin_40dp_">40dp</dimen>
-    <dimen name="size_item_collection">150dp</dimen>
+    <dimen name="size_item_collection">200dp</dimen>
     <dimen name="width_item_toptrend">170dp</dimen>
-    <dimen name="height_item_toptrend">150dp</dimen>
+    <dimen name="height_item_toptrend">170dp</dimen>
     <dimen name="size300dp">300dp</dimen>
     <dimen name="margin_250dp">250dp</dimen>
-    <dimen name="heightSlide">200dp</dimen>
-    <dimen name="heightitemCollection">250dp</dimen>
+    <dimen name="heightSlide">250dp</dimen>
+    <dimen name="heightitemCollection">300dp</dimen>
 </resources>
