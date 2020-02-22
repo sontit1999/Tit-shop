@@ -4,11 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="bgprofile">#f1f1f1</color>
     <color name="colorWhite2">#F0EBEB</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGrey">#B3B1B1</color>
-    <color name="colorGrey2">#E9E6E6</color>
     <color name="colorYellow">#FFEE58</color>
     <color name="colorRed">#FA0202</color>
     <color name="colorbgLoginRegister">#e6ded7</color>

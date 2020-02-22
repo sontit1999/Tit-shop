@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
     <data>
         <variable
             name="viewmodel"
@@ -16,23 +17,12 @@
             android:paddingRight="@dimen/margin_15dp_"
             android:layout_height="match_parent"
             android:background="@color/colorWhite">
-            <TextView
-                android:id="@+id/tvExplore"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/explore"
-                android:layout_marginTop="@dimen/margin_10dp_"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textview_tittle"
-                android:textStyle="bold" />
             <RelativeLayout
                 android:id="@+id/rlSearch"
                 android:background="@drawable/bg_search"
                 android:padding="@dimen/margin_5dp_"
                 android:layout_marginTop="@dimen/margin_15dp_"
-                app:layout_constraintTop_toBottomOf="@id/tvExplore"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_width="match_parent"
@@ -94,6 +84,7 @@
                         <ImageView
                             android:id="@+id/ivCollection"
                             android:src="@mipmap/bg"
+                            bind:imageUrl="@{viewmodel.urlAdvertise1}"
                             android:scaleType="centerCrop"
                             android:layout_centerInParent="true"
                             android:layout_width="match_parent"
@@ -136,6 +127,7 @@
                         <ImageView
                             android:id="@+id/ivWomen"
                             android:src="@mipmap/bg"
+                            bind:imageUrl="@{viewmodel.urlUrlAdvertise2}"
                             android:scaleType="centerCrop"
                             android:layout_centerInParent="true"
                             android:layout_width="match_parent"
