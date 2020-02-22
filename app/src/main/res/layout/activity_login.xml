@@ -125,7 +125,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_login"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/margin_10dp_"/>
+            android:layout_marginTop="@dimen/margin_15dp_"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -135,7 +135,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_sign_up"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/margin_10dp_">
+            android:layout_marginTop="@dimen/margin_20dp_">
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"

@@ -18,6 +18,7 @@ import com.example.titshop.databinding.ActivityHomeBinding;
 import com.example.titshop.fragment.explore.ExploreFragment;
 import com.example.titshop.fragment.home.HomeFragment;
 import com.example.titshop.fragment.product.ProductFragment;
+import com.example.titshop.fragment.profile.ProfileFragment;
 import com.example.titshop.fragment.wishlist.WishLishFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -63,7 +64,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
                         rePlaceFragment(new ProductFragment());
                         break;
                     case R.id.navigationProfile:
-                        Toast.makeText(HomeActivity.this, "click Profile", Toast.LENGTH_SHORT).show();
+                        rePlaceFragment(new ProfileFragment());
                         break;
                 }
                 return true;
@@ -118,7 +119,9 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             binding.actionBar.title.setText("back");
         }
         if(fragment instanceof ExploreFragment){
-            binding.actionBar.llNavigate.setVisibility(View.GONE);
+            binding.actionBar.ivIcon.setVisibility(View.GONE);
+            binding.actionBar.title.setVisibility(View.VISIBLE);
+            binding.actionBar.title.setText("Explore");
             binding.actionBar.ivMore.setVisibility(View.GONE);
             binding.actionBar.llFeature.setVisibility(View.VISIBLE);
             binding.actionBar.ivWishlist.setVisibility(View.GONE);
