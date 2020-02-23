@@ -20,4 +20,5 @@
     <dimen name="margin_250dp">250dp</dimen>
     <dimen name="heightSlide">200dp</dimen>
     <dimen name="heightitemCollection">250dp</dimen>
+    <dimen name="heighCover">200dp</dimen>
 </resources>
