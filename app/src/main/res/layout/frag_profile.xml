@@ -41,7 +41,7 @@
                 android:textSize="@dimen/textview_small"
                 android:textColor="@color/colorWhite"
                 android:layout_below="@id/tvUsername"
-                android:maxWidth="200dp"
+                android:maxWidth="250dp"
                 android:layout_marginTop="@dimen/margin_10dp_"
                 app:layout_constraintTop_toBottomOf="@id/tvUsername"
                 android:layout_width="wrap_content"
@@ -54,8 +54,8 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="@dimen/margin_10dp_"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_width="80dp"
-                android:layout_height="80dp"/>
+                android:layout_width="@dimen/heighAvatar"
+                android:layout_height="@dimen/heighAvatar"/>
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview"
                 app:cardElevation="@dimen/margin_5dp_"

@@ -9,6 +9,7 @@ import com.example.titshop.base.BaseActivity;
 import com.example.titshop.databinding.ActivityLoginBinding;
 import com.example.titshop.ui.forgotpass.ForgotActivity;
 import com.example.titshop.ui.home.HomeActivity;
+import com.example.titshop.ui.register.RegisterActivity;
 
 public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewModel> {
 
@@ -45,6 +46,11 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
                 startActivity(new Intent(LoginActivity.this, ForgotActivity.class));
             }
         });
-
+        binding.tvSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
     }
 }

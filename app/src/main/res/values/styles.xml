@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="SheetDialog" parent="Theme.AppCompat.Dialog">
+    <style name="SheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:colorBackground">     @android:color/transparent</item>

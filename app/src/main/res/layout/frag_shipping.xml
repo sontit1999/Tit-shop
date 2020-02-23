@@ -46,7 +46,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="@string/fullname"
                     android:textColor="@color/colorGrey"
-                    android:textSize="@dimen/textview_small"
+                    android:textSize="@dimen/textview_content"
                     />
                 <EditText
                     android:id="@+id/edtFullname"
@@ -55,7 +55,7 @@
                     android:padding="@dimen/margin_10dp_"
                     android:backgroundTint="@color/colorGrey"
                     android:textSize="@dimen/textview_content"
-                    android:textColor="@color/colorGrey"
+                    android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -76,7 +76,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="@string/phonenumber"
                     android:textColor="@color/colorGrey"
-                    android:textSize="@dimen/textview_small"
+                    android:textSize="@dimen/textview_content"
                     />
                 <EditText
                     android:id="@+id/edtPhoneNumber"
@@ -85,7 +85,7 @@
                     android:padding="@dimen/margin_10dp_"
                     android:backgroundTint="@color/colorGrey"
                     android:textSize="@dimen/textview_content"
-                    android:textColor="@color/colorGrey"
+                    android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -106,7 +106,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="@string/address2"
                     android:textColor="@color/colorGrey"
-                    android:textSize="@dimen/textview_small"
+                    android:textSize="@dimen/textview_content"
                     />
                 <EditText
                     android:id="@+id/edtAddress"
@@ -141,7 +141,7 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:text="@string/shippingmethod"
                         android:textColor="@color/colorGrey"
-                        android:textSize="@dimen/textview_small"
+                        android:textSize="@dimen/textview_content"
                         />
                     <Spinner
                         android:id="@+id/spinnerPayMethod"
@@ -166,7 +166,7 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:text="@string/zipcode"
                         android:textColor="@color/colorGrey"
-                        android:textSize="@dimen/textview_small"
+                        android:textSize="@dimen/textview_content"
                         />
                     <Spinner
                         android:id="@+id/spinnerZipcode"
@@ -197,7 +197,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="@string/total"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/textview_small"
+                    android:textSize="@dimen/textview_content"
                     />
                 <TextView
                     android:id="@+id/tvTotalMonney"
@@ -212,7 +212,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="@string/totalMonney"
                     android:textColor="@color/colorRed"
-                    android:textSize="@dimen/textview_small"
+                    android:textSize="@dimen/textview_content"
                     />
             </LinearLayout>
             <Button

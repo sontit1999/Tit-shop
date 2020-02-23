@@ -61,32 +61,9 @@
             android:background="@drawable/custom_bg_login_fb"
             android:layout_marginLeft="@dimen/margin_20dp_"
             android:layout_marginRight="@dimen/margin_20dp_"
-            bind:layout_constraintBottom_toTopOf="@id/llHaveAcount"
+            bind:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <LinearLayout
-            android:id="@+id/llHaveAcount"
-            android:orientation="horizontal"
-            android:gravity="center"
-            bind:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="@dimen/margin_15dp_"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tvAlreadyAcount"
-                android:text="@string/alreadyacount"
-                android:textSize="@dimen/textview_content"
-                android:textColor="@color/colorGrey"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
-            <TextView
-                android:id="@+id/tvLogin"
-                android:text="@string/login"
-                android:textSize="@dimen/textview_content"
-                android:layout_marginLeft="@dimen/margin_5dp_"
-                android:textColor="@color/colorBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
