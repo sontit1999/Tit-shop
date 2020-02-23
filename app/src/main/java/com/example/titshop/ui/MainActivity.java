@@ -29,12 +29,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     private void event() {
-        binding.llLoginFb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Login fb", Toast.LENGTH_SHORT).show();
-            }
-        });
         binding.llLoginEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

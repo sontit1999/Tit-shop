@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.titshop.model.Product;
+
 import java.util.ArrayList;
 
 public abstract class BaseAdapter<T ,VB extends ViewDataBinding> extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
@@ -21,6 +23,10 @@ public abstract class BaseAdapter<T ,VB extends ViewDataBinding> extends Recycle
     public void setList(ArrayList<T> arrayList){
         this.datalist = arrayList;
         notifyDataSetChanged();
+    }
+    public void removeItem(int pos){
+        datalist.remove(pos);
+        notifyItemRemoved(pos);
     }
     public void addMore(ArrayList<T> arrayList){
         this.datalist.addAll(arrayList);

@@ -40,12 +40,6 @@ public class IntroduceActivity extends BaseActivity<ActivityIntroduceBinding,Int
     }
 
     private void event() {
-        binding.tvLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(IntroduceActivity.this, LoginActivity.class));
-            }
-        });
         binding.btnShopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

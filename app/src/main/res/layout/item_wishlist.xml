@@ -5,6 +5,9 @@
         <variable
             name="product"
             type="com.example.titshop.model.Product" />
+        <variable
+            name="callback"
+            type="com.example.titshop.callback.WishlishCallback" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -55,6 +58,7 @@
                 android:paddingRight="@dimen/margin_15dp_"
                 android:paddingTop="@dimen/margin_5dp_"
                 android:paddingBottom="@dimen/margin_5dp_"
+                android:onClick="@{(view)->callback.onRemove(view,product)}"
                 android:layout_toRightOf="@id/ivProduct"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="@dimen/margin_10dp_"

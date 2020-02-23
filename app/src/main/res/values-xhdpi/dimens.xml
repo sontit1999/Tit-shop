@@ -21,4 +21,5 @@
     <dimen name="heightSlide">300dp</dimen>
     <dimen name="heightitemCollection">250dp</dimen>
     <dimen name="heighCover">250dp</dimen>
+    <dimen name="heighAvatar">125dp</dimen>
 </resources>

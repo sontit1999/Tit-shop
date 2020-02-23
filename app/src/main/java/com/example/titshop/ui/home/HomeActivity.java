@@ -1,19 +1,30 @@
 package com.example.titshop.ui.home;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.titshop.R;
+import com.example.titshop.adapter.CartAdapter;
 import com.example.titshop.base.BaseActivity;
 import com.example.titshop.base.BaseFragment;
 import com.example.titshop.callback.ActionbarListener;
+import com.example.titshop.callback.CartCallback;
 import com.example.titshop.databinding.ActivityHomeBinding;
 import com.example.titshop.fragment.explore.ExploreFragment;
 import com.example.titshop.fragment.home.HomeFragment;
@@ -21,11 +32,19 @@ import com.example.titshop.fragment.product.ProductFragment;
 import com.example.titshop.fragment.profile.ProfileFragment;
 import com.example.titshop.fragment.shipping.ShippingFragment;
 import com.example.titshop.fragment.wishlist.WishLishFragment;
+import com.example.titshop.model.Product;
+import com.example.titshop.model.SubProduct;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.zip.Inflater;
 
 public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel> implements ActionbarListener {
+    RecyclerView recyclerViewCart;
+    CartAdapter cartAdapter = new CartAdapter();
     @Override
     public Class<HomeViewModel> getViewmodel() {
         return HomeViewModel.class;
@@ -80,7 +99,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         binding.actionBar.ivCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "Click cart", Toast.LENGTH_SHORT).show();
+               showCart();
             }
         });
         binding.actionBar.ivWishlist.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +150,8 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         if(fragment instanceof WishLishFragment){
             binding.actionBar.llFeature.setVisibility(View.GONE);
             binding.actionBar.ivIcon.setVisibility(View.VISIBLE);
-            binding.actionBar.title.setVisibility(View.GONE);
+            binding.actionBar.title.setVisibility(View.VISIBLE);
+            binding.actionBar.title.setText("Wish list");
         }
         if(fragment instanceof ShippingFragment){
             binding.actionBar.llNavigate.setVisibility(View.VISIBLE);
@@ -140,5 +160,61 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             binding.actionBar.ivIcon.setVisibility(View.VISIBLE);
             binding.actionBar.llFeature.setVisibility(View.GONE);
         }
+        if(fragment instanceof ProfileFragment){
+            binding.actionBar.llNavigate.setVisibility(View.VISIBLE);
+            binding.actionBar.ivIcon.setVisibility(View.GONE);
+            binding.actionBar.title.setVisibility(View.VISIBLE);
+            binding.actionBar.title.setText("Profile");
+            binding.actionBar.llFeature.setVisibility(View.VISIBLE);
+            binding.actionBar.ivWishlist.setVisibility(View.VISIBLE);
+            binding.actionBar.ivCart.setVisibility(View.VISIBLE);
+        }
+    }
+    public void showCart(){
+        final View view = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_cart,null);
+        // ánh xạ
+        recyclerViewCart = (RecyclerView) view.findViewById(R.id.rvCart);
+        Button btnCheckout = (Button) view.findViewById(R.id.btnCheckout);
+        // set uprecyclerview
+
+        recyclerViewCart.setHasFixedSize(true);
+        recyclerViewCart.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recyclerViewCart.setAdapter(cartAdapter);
+        //get data
+        final ArrayList<Product> arr = new ArrayList<>();
+        arr.add(new Product(" Korean Style Women","https://my-test-11.slatic.net/p/7/kobwa-korean-style-women-fashion-casual-pu-leather-ladies-handbag-shoulder-bucket-tote-bag-brown-8138-099175611-084e0414bbec596b0199d890d826bd3b-.jpg_600x600q80.jpg","$69","x","dress","99",4.5f));
+        arr.add(new Product("Bat sloweet wolan","https://ae01.alicdn.com/kf/HTB1DP_RXWSs3KVjSZPiq6AsiVXa5/2020-Plus-Size-Bat-Sleeved-Woolen-Coat-Scarf-Collar-Jackets-Women-Winter-Fashion-Outerwear-Thicker-Loose.jpg","$24.47","x","dress","132",4.5f));
+        arr.add(new Product("T-shrit ladies","https://i.pinimg.com/736x/fc/07/d4/fc07d472f7a97762b5e2374446a8543f.jpg","$24.89","x","x","23",4.5f));
+        arr.add(new Product("Big Deal Kevin","https://ae01.alicdn.com/kf/HTB1MftjbdzvK1RkSnfoq6zMwVXan/KENVY-Brand-Fashion-Women-s-High-end-Luxury-Winter-Contrast-Color-Jacquard-Knitted-Cotton-Casual-Sweater.jpg","$11.89","x","x","23",4.5f));
+        cartAdapter.setList(arr);
+        cartAdapter.setCallback(new CartCallback() {
+            @Override
+            public void ontang(Product product) {
+                Toast.makeText(HomeActivity.this, "Tang " + product.getName() , Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void ongiam(Product product) {
+                Toast.makeText(HomeActivity.this, "Giam " + product.getName(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onProductClick(Product product) {
+                Toast.makeText(HomeActivity.this, "Click "  + product.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        // get cart
+
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(view);
+        bottomSheetDialog.show();
+        // set actiom
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this, "Check out", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
+

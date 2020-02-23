@@ -1,6 +1,8 @@
 package com.example.titshop.fragment.wishlist;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.titshop.R;
 import com.example.titshop.base.BaseFragment;
 import com.example.titshop.callback.ActionbarListener;
+import com.example.titshop.callback.WishlishCallback;
 import com.example.titshop.databinding.FragWishlistBinding;
 import com.example.titshop.model.Product;
 
@@ -50,10 +53,22 @@ public class WishLishFragment extends BaseFragment<FragWishlistBinding, WishList
     public void ViewCreated() {
           viewmodel.getArrWishlish().observe(this, new Observer<ArrayList<Product>>() {
               @Override
-              public void onChanged(ArrayList<Product> products) {
+              public void onChanged(final ArrayList<Product> products) {
                   viewmodel.wishlistAdapter.setList(products);
+                  viewmodel.wishlistAdapter.setCallback(new WishlishCallback() {
+                      @Override
+                      public void onItemClick(View view, Product product) {
+
+                      }
+
+                      @Override
+                      public void onRemove(View view, Product product) {
+                          viewmodel.wishlistAdapter.removeItem(products.indexOf(product));
+                      }
+                  });
               }
           });
+
     }
 
     @Override
