@@ -39,6 +39,8 @@
                     android:id="@+id/edtSearch"
                     android:background="@null"
                     android:hint="@string/search"
+                    android:inputType="text"
+                    android:maxLines="1"
                     android:layout_centerVertical="true"
                     android:padding="@dimen/margin_5dp_"
                     android:textSize="@dimen/textview_content"

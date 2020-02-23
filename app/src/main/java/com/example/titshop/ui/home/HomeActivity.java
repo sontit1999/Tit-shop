@@ -19,6 +19,7 @@ import com.example.titshop.fragment.explore.ExploreFragment;
 import com.example.titshop.fragment.home.HomeFragment;
 import com.example.titshop.fragment.product.ProductFragment;
 import com.example.titshop.fragment.profile.ProfileFragment;
+import com.example.titshop.fragment.shipping.ShippingFragment;
 import com.example.titshop.fragment.wishlist.WishLishFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -131,6 +132,13 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             binding.actionBar.llFeature.setVisibility(View.GONE);
             binding.actionBar.ivIcon.setVisibility(View.VISIBLE);
             binding.actionBar.title.setVisibility(View.GONE);
+        }
+        if(fragment instanceof ShippingFragment){
+            binding.actionBar.llNavigate.setVisibility(View.VISIBLE);
+            binding.actionBar.title.setVisibility(View.VISIBLE);
+            binding.actionBar.title.setText("Checkout");
+            binding.actionBar.ivIcon.setVisibility(View.VISIBLE);
+            binding.actionBar.llFeature.setVisibility(View.GONE);
         }
     }
 }

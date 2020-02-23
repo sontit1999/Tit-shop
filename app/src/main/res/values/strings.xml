@@ -24,16 +24,25 @@
     <string name="itemfound">7743 items found</string>
     <string name="womanTop">Women \'s Tops</string>
     <string name="wishlist">Wish List</string>
+    <string name="shipping">Shipping</string>
     <string name="explore">Explore</string>
     <string name="womensuit">Women\'s Suit</string>
     <string name="upto">up to 70% off</string>
     <string name="upto50">up to 50% off</string>
     <string name="move">move to bag</string>
     <string name="address">My address</string>
+    <string name="address2">Address</string>
+    <string name="total">Total :</string>
+    <string name="totalMonney">99$</string>
+    <string name="shippingmethod">Shipping method</string>
+    <string name="zipcode">Zip code</string>
     <string name="Account">Account</string>
     <string name="Notification">Notification</string>
     <string name="password">Password</string>
     <string name="language">Language</string>
+    <string name="confirm">Confirm</string>
+    <string name="fullname">Full Name</string>
+    <string name="phonenumber">Phonenumber</string>
     <string name="username">Miranda West</string>
     <string name="sentenlike">Work hard in liscense. Let your success be the noise</string>
     <string name="signupfacebook">Sign Up with Facebook</string>
@@ -41,4 +50,15 @@
     <string name="showall">Show all</string>
     <string name="collection">Designer Collection</string>
     <string name="toptrend">Top Trends</string>
+    <string-array name="payMehthod">
+        <item>Online payment</item>
+        <item>Pay at home</item>
+    </string-array>
+    <string-array name="zipcode">
+        <item>1000</item>
+        <item>1001</item>
+        <item>1002</item>
+        <item>1003</item>
+        <item>1004</item>
+    </string-array>
 </resources>
