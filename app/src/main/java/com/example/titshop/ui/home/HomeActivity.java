@@ -16,6 +16,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -75,16 +78,19 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.navigationShop:
-                        rePlaceFragment(new HomeFragment());
+                       rePlaceFragment(new HomeFragment());
+
                         break;
                     case R.id.navigationExplore:
                         rePlaceFragment(new ExploreFragment());
+
                         break;
                     case R.id.navigationNotification:
-                        rePlaceFragment(new ProductFragment());
+
                         break;
                     case R.id.navigationProfile:
-                        rePlaceFragment(new ProfileFragment());
+                       rePlaceFragment(new ProfileFragment());
+
                         break;
                 }
                 return true;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.titshop.fragment.home.HomeFragment"
+        tools:layout="@layout/frag_home"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/exploreFragment"
+        tools:layout="@layout/frag_explore"
+        android:name="com.example.titshop.fragment.explore.ExploreFragment"
+        android:label="ExploreFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        tools:layout="@layout/frag_profile"
+        android:name="com.example.titshop.fragment.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/productFragment"
+        tools:layout="@layout/frag_product"
+        android:name="com.example.titshop.fragment.product.ProductFragment"
+        android:label="ProductFragment" />
+    <fragment
+        android:id="@+id/shippingFragment"
+        tools:layout="@layout/frag_shipping"
+        android:name="com.example.titshop.fragment.shipping.ShippingFragment"
+        android:label="ShippingFragment" />
+    <fragment
+        android:id="@+id/wishLishFragment"
+        tools:layout="@layout/frag_wishlist"
+        android:name="com.example.titshop.fragment.wishlist.WishLishFragment"
+        android:label="WishLishFragment" />
+</navigation>
