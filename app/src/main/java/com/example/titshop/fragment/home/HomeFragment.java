@@ -1,7 +1,10 @@
 package com.example.titshop.fragment.home;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,6 +20,7 @@ import com.example.titshop.adapter.SliderAdapterExample;
 import com.example.titshop.base.BaseFragment;
 import com.example.titshop.callback.ActionbarListener;
 import com.example.titshop.databinding.FragHomeBinding;
+import com.example.titshop.fragment.Fragment;
 import com.example.titshop.fragment.product.ProductFragment;
 import com.example.titshop.fragment.shipping.ShippingFragment;
 import com.example.titshop.model.Product;
@@ -60,18 +64,10 @@ public class HomeFragment extends BaseFragment<FragHomeBinding,HomeFragViewModel
         binding.tvShowAllCollection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getFragmentManager();
-              ProductFragment productFragment = new ProductFragment();
-              fragmentManager.beginTransaction().replace(R.id.frameLayout,productFragment).commit();
+
             }
         });
 
-        binding.tvShowAllToptrend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.frameLayout,new ShippingFragment()).commit();
-            }
-        });
     }
 
     private void initRecyclerview() {
@@ -119,6 +115,12 @@ public class HomeFragment extends BaseFragment<FragHomeBinding,HomeFragViewModel
             @Override
             public void onChanged(ArrayList<Product> products) {
                 viewmodel.ToptrendAdapter.setList(products);
+            }
+        });
+        binding.tvShowAllToptrend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_homeFragment_to_productFragment);
             }
         });
     }
