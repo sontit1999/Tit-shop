@@ -3,20 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/navigationShop">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/navigationShop"
         android:name="com.example.titshop.fragment.home.HomeFragment"
         tools:layout="@layout/frag_home"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_wishLishFragment"
+            app:destination="@id/wishLishFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/exploreFragment"
+        android:id="@+id/navigationExplore"
         tools:layout="@layout/frag_explore"
         android:name="com.example.titshop.fragment.explore.ExploreFragment"
         android:label="ExploreFragment" />
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/navigationProfile"
         tools:layout="@layout/frag_profile"
         android:name="com.example.titshop.fragment.profile.ProfileFragment"
         android:label="ProfileFragment" />
@@ -29,7 +36,13 @@
         android:id="@+id/shippingFragment"
         tools:layout="@layout/frag_shipping"
         android:name="com.example.titshop.fragment.shipping.ShippingFragment"
-        android:label="ShippingFragment" />
+        android:label="ShippingFragment" >
+        <action
+            android:id="@+id/action_shippingFragment_to_navigationShop"
+            app:popUpTo="@+id/navigationShop"
+            app:popUpToInclusive="true"
+            app:destination="@id/navigationShop" />
+    </fragment>
     <fragment
         android:id="@+id/wishLishFragment"
         tools:layout="@layout/frag_wishlist"

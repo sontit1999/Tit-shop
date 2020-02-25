@@ -1,9 +1,12 @@
 package com.example.titshop.fragment.shipping;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.titshop.R;
 import com.example.titshop.base.BaseFragment;
@@ -32,6 +35,13 @@ public class ShippingFragment extends BaseFragment<FragShippingBinding,ShippingV
     public void setBindingViewmodel() {
            binding.setViewmodel(viewmodel);
            setupSpinner();
+           binding.btnConfirm.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   Toast.makeText(getActivity(), "Order success", Toast.LENGTH_SHORT).show();
+                   NavHostFragment.findNavController(ShippingFragment.this).navigate(R.id.action_shippingFragment_to_navigationShop);
+               }
+           });
     }
 
     private void setupSpinner() {

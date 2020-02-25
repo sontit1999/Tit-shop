@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
 import com.example.titshop.R;
 import com.example.titshop.base.BaseFragment;
 import com.example.titshop.callback.ActionbarListener;
@@ -34,7 +35,8 @@ public class ProfileFragment extends BaseFragment<FragProfileBinding,ProfileView
 
     @Override
     public void ViewCreated() {
-
+        Glide.with(getContext()).load("https://media.ex-cdn.com/EXP/media.phatgiao.org.vn/files/f1/Contents/nguyenlinhchi/20161027/Phatgiao-org-vn-Phatdaychantrau.jpg").into(binding.ivCover);
+        Glide.with(getContext()).load("https://i.pinimg.com/originals/82/49/22/824922ef9208b68312a930256116dd5c.jpg").into(binding.ivAvatar);
     }
 
     @Override

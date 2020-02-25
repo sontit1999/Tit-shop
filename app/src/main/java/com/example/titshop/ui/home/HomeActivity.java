@@ -3,6 +3,7 @@ package com.example.titshop.ui.home;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,9 +17,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,6 +51,7 @@ import java.util.zip.Inflater;
 public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel> implements ActionbarListener {
     RecyclerView recyclerViewCart;
     CartAdapter cartAdapter = new CartAdapter();
+
     @Override
     public Class<HomeViewModel> getViewmodel() {
         return HomeViewModel.class;
@@ -62,9 +66,17 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
     public void setBindingViewmodel() {
        binding.setViewmodel(viewmodel);
        setuptToolbar();
+        setUpNavigation();
        event();
-       // load default fragment
-        rePlaceFragment(new HomeFragment());
+//       // load default fragment
+//        rePlaceFragment(new HomeFragment());
+    }
+
+    private void setUpNavigation() {
+        NavHostFragment navHostFragment =  (NavHostFragment)getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host);
+        NavigationUI.setupWithNavController(binding.bottomNavigation,
+                navHostFragment.getNavController());
     }
 
     private void setuptToolbar() {
@@ -73,33 +85,11 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
     }
 
     private void event() {
-        binding.bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.navigationShop:
-                       rePlaceFragment(new HomeFragment());
-
-                        break;
-                    case R.id.navigationExplore:
-                        rePlaceFragment(new ExploreFragment());
-
-                        break;
-                    case R.id.navigationNotification:
-
-                        break;
-                    case R.id.navigationProfile:
-                       rePlaceFragment(new ProfileFragment());
-
-                        break;
-                }
-                return true;
-            }
-        });
         binding.actionBar.ivIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "Click icon back", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(HomeActivity.this, R.id.nav_host)
+                        .navigateUp();
             }
         });
         binding.actionBar.ivCart.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +101,9 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         binding.actionBar.ivWishlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                rePlaceFragment(new WishLishFragment());
+//                rePlaceFragment(new WishLishFragment());
+                Navigation.findNavController(HomeActivity.this, R.id.nav_host)
+                        .navigate(R.id.wishLishFragment);
             }
         });
         binding.actionBar.ivMore.setOnClickListener(new View.OnClickListener() {
@@ -122,14 +114,10 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         });
     }
 
-    public void rePlaceFragment(Fragment fragment){
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment).commit();
-    }
-
-
     @Override
     public void onResumFragment(BaseFragment fragment) {
         if(fragment instanceof HomeFragment){
+             binding.bottomNavigation.getMenu().findItem(R.id.navigationShop).setChecked(true);
              binding.actionBar.llFeature.setVisibility(View.VISIBLE);
              binding.actionBar.llNavigate.setVisibility(View.VISIBLE);
              binding.actionBar.title.setVisibility(View.VISIBLE);
@@ -140,11 +128,12 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         }
         if(fragment instanceof ProductFragment){
             binding.actionBar.ivIcon.setVisibility(View.VISIBLE);
-            binding.actionBar.ivMore.setVisibility(View.GONE);
+            binding.actionBar.llFeature.setVisibility(View.GONE);
             binding.actionBar.ivIcon.setImageResource(R.drawable.ic_chevron_left_black_24dp);
             binding.actionBar.title.setText("back");
         }
         if(fragment instanceof ExploreFragment){
+            binding.bottomNavigation.getMenu().findItem(R.id.navigationExplore).setChecked(true);
             binding.actionBar.ivIcon.setVisibility(View.GONE);
             binding.actionBar.title.setVisibility(View.VISIBLE);
             binding.actionBar.title.setText("Explore");
@@ -167,6 +156,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             binding.actionBar.llFeature.setVisibility(View.GONE);
         }
         if(fragment instanceof ProfileFragment){
+            binding.bottomNavigation.getMenu().findItem(R.id.navigationProfile).setChecked(true);
             binding.actionBar.llNavigate.setVisibility(View.VISIBLE);
             binding.actionBar.ivIcon.setVisibility(View.GONE);
             binding.actionBar.title.setVisibility(View.VISIBLE);
@@ -218,9 +208,12 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "Check out", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(HomeActivity.this, R.id.nav_host)
+                        .navigate(R.id.shippingFragment);
+                bottomSheetDialog.dismiss();
             }
         });
     }
+
 }
 
