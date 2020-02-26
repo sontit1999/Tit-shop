@@ -6,9 +6,10 @@ import com.example.titshop.base.BaseAdapter;
 import com.example.titshop.base.CBAdapter;
 import com.example.titshop.callback.CartCallback;
 import com.example.titshop.databinding.ItemCartBinding;
+import com.example.titshop.model.CartItem;
 import com.example.titshop.model.Product;
 
-public class CartAdapter extends BaseAdapter<Product, ItemCartBinding> {
+public class CartAdapter extends BaseAdapter<CartItem, ItemCartBinding> {
     CartCallback callback;
     @Override
     public int getLayoutId() {
@@ -17,7 +18,7 @@ public class CartAdapter extends BaseAdapter<Product, ItemCartBinding> {
 
     @Override
     public int getIdVariable() {
-        return BR.product;
+        return BR.carditem;
     }
 
     @Override
@@ -33,10 +34,11 @@ public class CartAdapter extends BaseAdapter<Product, ItemCartBinding> {
     public void setCallback(CartCallback callback) {
         this.callback = callback;
     }
-    public void tang(Product product){
-
-    }
-    public void giam(Product product){
-
+    public String getTotal(){
+        float total = 0;
+        for(CartItem i : datalist){
+            total += i.pay();
+        }
+        return "$" + total ;
     }
 }
