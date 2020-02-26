@@ -3,8 +3,8 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="product"
-            type="com.example.titshop.model.Product" />
+            name="carditem"
+            type="com.example.titshop.model.CartItem" />
         <variable
             name="callback"
             type="com.example.titshop.callback.CartCallback" />
@@ -15,17 +15,17 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/ivProduct"
-                android:onClick="@{(view)->callback.onProductClick(product)}"
+                android:onClick="@{(view)->callback.onProductClick(carditem)}"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/bg"
-                bind:imageUrl="@{product.imageUrl}"></ImageView>
+                bind:imageUrl="@{carditem.product.imageUrl}"></ImageView>
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_toLeftOf="@id/llNumber"
                 android:layout_toRightOf="@id/ivProduct"
-                android:onClick="@{(view)->callback.onProductClick(product)}"
+                android:onClick="@{(view)->callback.onProductClick(carditem)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -35,7 +35,7 @@
                     android:layout_marginTop="@dimen/margin_5dp_"
                     android:layout_toRightOf="@id/ivProduct"
                     android:padding="@dimen/margin_5dp_"
-                    android:text="@{product.name}"
+                    android:text="@{carditem.product.name}"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/textview_content" />
 
@@ -47,7 +47,7 @@
                     android:maxLength="30"
                     android:layout_toRightOf="@id/ivProduct"
                     android:padding="7dp"
-                    android:text="@{product.price}"
+                    bind:monney="@{carditem.product.price}"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/textview_small" />
                 <TextView
@@ -58,7 +58,7 @@
                     android:maxLength="30"
                     android:layout_toRightOf="@id/ivProduct"
                     android:padding="7dp"
-                    android:text="Size : l"
+                    bind:size="@{carditem.size}"
                     android:textColor="@color/colorGrey"
                     android:textSize="@dimen/textview_small" />
             </LinearLayout>
@@ -72,14 +72,14 @@
                 android:layout_height="wrap_content">
                 <ImageButton
                     android:id="@+id/ib_tru"
-                    android:onClick="@{(view)->callback.ongiam(product)}"
+                    android:onClick="@{(view)->callback.ongiam(carditem)}"
                     android:src="@drawable/ic_remove_black_24dp"
                     android:background="@null"
-                    android:layout_width="@dimen/margin_15dp_"
-                    android:layout_height="@dimen/margin_15dp_"/>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
                 <TextView
                     android:id="@+id/tvNumber"
-                    android:text="1"
+                    android:text="@{carditem.numberItem}"
                     android:layout_marginLeft="@dimen/margin_10dp_"
                     android:layout_marginRight="@dimen/margin_10dp_"
                     android:textColor="@color/colorBlack"
@@ -90,9 +90,9 @@
                     android:id="@+id/ib_cong"
                     android:src="@drawable/ic_add_black_24dp"
                     android:background="@null"
-                    android:onClick="@{(view)->callback.ontang(product)}"
-                    android:layout_width="@dimen/margin_15dp_"
-                    android:layout_height="@dimen/margin_15dp_"/>
+                    android:onClick="@{(view)->callback.ontang(carditem)}"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
             </LinearLayout>
         </RelativeLayout>
 </layout>
