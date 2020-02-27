@@ -32,6 +32,7 @@ import com.example.titshop.base.BaseFragment;
 import com.example.titshop.callback.ActionbarListener;
 import com.example.titshop.callback.CartCallback;
 import com.example.titshop.databinding.ActivityHomeBinding;
+import com.example.titshop.fragment.detailproduct.DetailFragment;
 import com.example.titshop.fragment.explore.ExploreFragment;
 import com.example.titshop.fragment.home.HomeFragment;
 import com.example.titshop.fragment.product.ProductFragment;
@@ -116,6 +117,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
     @Override
     public void onResumFragment(BaseFragment fragment) {
         if(fragment instanceof HomeFragment){
+             binding.bottomNavigation.setVisibility(View.VISIBLE);
              binding.bottomNavigation.getMenu().findItem(R.id.navigationShop).setChecked(true);
              binding.actionBar.llFeature.setVisibility(View.VISIBLE);
              binding.actionBar.llNavigate.setVisibility(View.VISIBLE);
@@ -126,12 +128,14 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
              binding.actionBar.title.setText("Shopping");
         }
         if(fragment instanceof ProductFragment){
+            binding.bottomNavigation.setVisibility(View.VISIBLE);
             binding.actionBar.ivIcon.setVisibility(View.VISIBLE);
             binding.actionBar.llFeature.setVisibility(View.GONE);
             binding.actionBar.ivIcon.setImageResource(R.drawable.ic_chevron_left_black_24dp);
             binding.actionBar.title.setText("back");
         }
         if(fragment instanceof ExploreFragment){
+            binding.bottomNavigation.setVisibility(View.VISIBLE);
             binding.bottomNavigation.getMenu().findItem(R.id.navigationExplore).setChecked(true);
             binding.actionBar.ivIcon.setVisibility(View.GONE);
             binding.actionBar.title.setVisibility(View.VISIBLE);
@@ -142,12 +146,14 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             binding.actionBar.ivCart.setVisibility(View.VISIBLE);
         }
         if(fragment instanceof WishLishFragment){
+            binding.bottomNavigation.setVisibility(View.VISIBLE);
             binding.actionBar.llFeature.setVisibility(View.GONE);
             binding.actionBar.ivIcon.setVisibility(View.VISIBLE);
             binding.actionBar.title.setVisibility(View.VISIBLE);
             binding.actionBar.title.setText("Wish list");
         }
         if(fragment instanceof ShippingFragment){
+            binding.bottomNavigation.setVisibility(View.GONE);
             binding.actionBar.llNavigate.setVisibility(View.VISIBLE);
             binding.actionBar.title.setVisibility(View.VISIBLE);
             binding.actionBar.title.setText("Checkout");
@@ -155,6 +161,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             binding.actionBar.llFeature.setVisibility(View.GONE);
         }
         if(fragment instanceof ProfileFragment){
+            binding.bottomNavigation.setVisibility(View.VISIBLE);
             binding.bottomNavigation.getMenu().findItem(R.id.navigationProfile).setChecked(true);
             binding.actionBar.llNavigate.setVisibility(View.VISIBLE);
             binding.actionBar.ivIcon.setVisibility(View.GONE);
@@ -163,6 +170,16 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             binding.actionBar.llFeature.setVisibility(View.VISIBLE);
             binding.actionBar.ivWishlist.setVisibility(View.VISIBLE);
             binding.actionBar.ivCart.setVisibility(View.VISIBLE);
+        }
+        if(fragment instanceof DetailFragment){
+            binding.bottomNavigation.setVisibility(View.GONE);
+            binding.actionBar.llFeature.setVisibility(View.VISIBLE);
+            binding.actionBar.ivCart.setVisibility(View.VISIBLE);
+            binding.actionBar.ivWishlist.setVisibility(View.VISIBLE);
+            binding.actionBar.ivMore.setVisibility(View.GONE);
+            binding.actionBar.ivIcon.setVisibility(View.VISIBLE);
+            binding.actionBar.title.setVisibility(View.VISIBLE);
+            binding.actionBar.title.setText("Back");
         }
     }
     public void showCart(){

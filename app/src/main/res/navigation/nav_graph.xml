@@ -16,12 +16,19 @@
         <action
             android:id="@+id/action_homeFragment_to_productFragment"
             app:destination="@id/productFragment" />
+        <action
+            android:id="@+id/action_navigationShop_to_DetailFragment"
+            app:destination="@id/DetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigationExplore"
         tools:layout="@layout/frag_explore"
         android:name="com.example.titshop.fragment.explore.ExploreFragment"
-        android:label="ExploreFragment" />
+        android:label="ExploreFragment" >
+        <action
+            android:id="@+id/action_navigationExplore_to_DetailFragment"
+            app:destination="@id/DetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigationProfile"
         tools:layout="@layout/frag_profile"
@@ -31,7 +38,11 @@
         android:id="@+id/productFragment"
         tools:layout="@layout/frag_product"
         android:name="com.example.titshop.fragment.product.ProductFragment"
-        android:label="ProductFragment" />
+        android:label="ProductFragment" >
+        <action
+            android:id="@+id/action_productFragment_to_DetailFragment"
+            app:destination="@id/DetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shippingFragment"
         tools:layout="@layout/frag_shipping"
@@ -47,5 +58,14 @@
         android:id="@+id/wishLishFragment"
         tools:layout="@layout/frag_wishlist"
         android:name="com.example.titshop.fragment.wishlist.WishLishFragment"
-        android:label="WishLishFragment" />
+        android:label="WishLishFragment" >
+        <action
+            android:id="@+id/action_wishLishFragment_to_DetailFragment"
+            app:destination="@id/DetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/DetailFragment"
+        tools:layout="@layout/frag_detailproduct"
+        android:name="com.example.titshop.fragment.detailproduct.DetailFragment"
+        android:label="DetailFragment" />
 </navigation>

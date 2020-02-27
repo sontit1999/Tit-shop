@@ -120,7 +120,7 @@ public class HomeFragment extends BaseFragment<FragHomeBinding,HomeFragViewModel
         binding.tvShowAllToptrend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_homeFragment_to_productFragment);
+                NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.productFragment);
             }
         });
     }
