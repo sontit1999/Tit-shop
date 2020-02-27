@@ -1,9 +1,16 @@
 package com.example.titshop.fragment.product;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.ImageViewCompat;
 import androidx.lifecycle.Observer;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,7 +19,11 @@ import com.example.titshop.R;
 import com.example.titshop.adapter.ProductAdapter;
 import com.example.titshop.base.BaseFragment;
 import com.example.titshop.callback.ActionbarListener;
+import com.example.titshop.callback.ProductCallback;
 import com.example.titshop.databinding.FragProductBinding;
+import com.example.titshop.fragment.home.HomeFragment;
+import com.example.titshop.fragment.profile.ProfileFragment;
+import com.example.titshop.model.Product;
 import com.example.titshop.model.SubProduct;
 
 import java.util.ArrayList;
@@ -52,8 +63,19 @@ public class ProductFragment extends BaseFragment<FragProductBinding, ProductFra
     public void ViewCreated() {
         viewmodel.getArrSubProductCollection().observe(this, new Observer<ArrayList<SubProduct>>() {
             @Override
-            public void onChanged(ArrayList<SubProduct> subProducts) {
+            public void onChanged(final ArrayList<SubProduct> subProducts) {
                 viewmodel.ProductAdapter.setList(subProducts);
+                viewmodel.ProductAdapter.setCallback(new ProductCallback() {
+                    @Override
+                    public void onProductClick(SubProduct product) {
+                        NavHostFragment.findNavController(ProductFragment.this).navigate(R.id.action_productFragment_to_DetailFragment);
+                    }
+
+                    @Override
+                    public void onLikeClick(View view, SubProduct product) {
+                        Toast.makeText(getActivity(), "Like " + product.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                });
                 binding.tvNumberItem.setText(subProducts.size() + " items found");
             }
         });

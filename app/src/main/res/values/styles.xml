@@ -24,4 +24,9 @@
         <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">true</item>
 
     </style>
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/colorBlack</item>
+        <item name="tabIndicatorHeight">1dp</item>
+        <item name="tabBackground">@color/colorWhite</item>
+    </style>
 </resources>

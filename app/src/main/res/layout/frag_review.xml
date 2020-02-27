@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="product"
+            type="com.example.titshop.model.Product" />
+        <variable
+            name="viewmodel"
+            type="com.example.titshop.fragment.review.ReviewViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvReview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/llComment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/viewNgang"
+            android:background="@color/colorGrey"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toTopOf="@id/llComment"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:id="@+id/llComment"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <EditText
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:padding="@dimen/margin_15dp_"
+                android:inputType="text"
+                android:background="@null"
+                android:textSize="@dimen/textview_content"
+                android:textColor="@color/colorBlack"
+                android:hint="@string/reveiw"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <ImageButton
+                android:src="@drawable/ic_sentiment_very_satisfied_black_24dp"
+                android:layout_width="@dimen/margin_40dp_"
+                android:tint="@color/colorRed"
+                android:background="@null"
+                android:layout_height="@dimen/margin_40dp_"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

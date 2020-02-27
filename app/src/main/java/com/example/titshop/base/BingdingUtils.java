@@ -1,13 +1,17 @@
 package com.example.titshop.base;
 
 
+import android.content.res.ColorStateList;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.ImageViewCompat;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.titshop.R;
 
 
 public class BingdingUtils {
@@ -27,6 +31,12 @@ public class BingdingUtils {
     public static void monney(TextView view, String monney) {
        view.setText("$" + monney);
 
+    }
+    @BindingAdapter({"bind:islike"})
+    public static void islike(ImageView view, String idProduct) {
+        if(idProduct.equals("y")){
+            ImageViewCompat.setImageTintList(view, ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorRed)));
+        }
     }
     @BindingAdapter({"bind:size"})
     public static void size(TextView view, String size) {
