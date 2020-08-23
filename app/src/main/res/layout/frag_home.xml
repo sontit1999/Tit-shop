@@ -16,16 +16,17 @@
             android:layout_height="match_parent">
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardviewSlider"
+                app:layout_constraintDimensionRatio="1:0.75"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp">
 
                 <com.smarteist.autoimageslider.SliderView
                     android:id="@+id/imageSlider"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/heightSlide"
+                    android:layout_height="match_parent"
                     app:sliderAnimationDuration="600"
                     app:sliderAutoCycleDirection="back_and_forth"
                     app:sliderIndicatorAnimationDuration="600"

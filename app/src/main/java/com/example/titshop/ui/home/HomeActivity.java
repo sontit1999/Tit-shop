@@ -44,6 +44,8 @@ import com.example.titshop.model.Product;
 import com.example.titshop.model.SubProduct;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -70,6 +72,10 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
        setuptToolbar();
         setUpNavigation();
          event();
+         // test writo to database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+        myRef.setValue("Hello, World!");
     }
 
     private void setUpNavigation() {

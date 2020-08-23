@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "232948427394",
+    "firebase_url": "https://titshop-a7b4a.firebaseio.com",
+    "project_id": "titshop-a7b4a",
+    "storage_bucket": "titshop-a7b4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232948427394:android:e0d0036553956661a8e29b",
+        "android_client_info": {
+          "package_name": "com.example.titshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232948427394-o1jceb4p24sbu8sk6a0ig0tk84nk9u45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaFLK2QRejXHfpwfKE--Sg188rpfesr-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232948427394-o1jceb4p24sbu8sk6a0ig0tk84nk9u45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
