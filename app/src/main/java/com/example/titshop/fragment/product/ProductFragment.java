@@ -64,18 +64,7 @@ public class ProductFragment extends BaseFragment<FragProductBinding, ProductFra
         viewmodel.getArrSubProductCollection().observe(this, new Observer<ArrayList<SubProduct>>() {
             @Override
             public void onChanged(final ArrayList<SubProduct> subProducts) {
-                viewmodel.ProductAdapter.setList(subProducts);
-                viewmodel.ProductAdapter.setCallback(new ProductCallback() {
-                    @Override
-                    public void onProductClick(SubProduct product) {
-                        NavHostFragment.findNavController(ProductFragment.this).navigate(R.id.action_productFragment_to_DetailFragment);
-                    }
 
-                    @Override
-                    public void onLikeClick(View view, SubProduct product) {
-                        Toast.makeText(getActivity(), "Like " + product.getName(), Toast.LENGTH_SHORT).show();
-                    }
-                });
                 binding.tvNumberItem.setText(subProducts.size() + " items found");
             }
         });

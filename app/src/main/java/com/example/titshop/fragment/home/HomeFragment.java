@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,10 +20,13 @@ import com.example.titshop.R;
 import com.example.titshop.adapter.SliderAdapterExample;
 import com.example.titshop.base.BaseFragment;
 import com.example.titshop.callback.ActionbarListener;
+import com.example.titshop.callback.CagetoryCallback;
+import com.example.titshop.callback.FlashSaleCallback;
 import com.example.titshop.databinding.FragHomeBinding;
 import com.example.titshop.fragment.Fragment;
 import com.example.titshop.fragment.product.ProductFragment;
 import com.example.titshop.fragment.shipping.ShippingFragment;
+import com.example.titshop.model.Cagetory;
 import com.example.titshop.model.Product;
 import com.example.titshop.model.SliderItem;
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -71,17 +75,21 @@ public class HomeFragment extends BaseFragment<FragHomeBinding,HomeFragViewModel
     }
 
     private void initRecyclerview() {
-          // init recyclerview collection
+          // init recyclerview flash sale
          RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false);
          binding.rvCollection.setHasFixedSize(true);
          binding.rvCollection.setLayoutManager(layoutManager);
-         binding.rvCollection.setAdapter(viewmodel.CollectionAdapter);
+         binding.rvCollection.setAdapter(viewmodel.flashSaleAdapter);
 
          // init recyclerview toptrend
-        RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false);
+        binding.rvToptrend.setAdapter(viewmodel.productAdapter);
         binding.rvToptrend.setHasFixedSize(true);
-        binding.rvToptrend.setLayoutManager(manager);
-        binding.rvToptrend.setAdapter(viewmodel.ToptrendAdapter);
+        binding.rvToptrend.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false));
+
+        // init rv cagetory
+        binding.rvCagetory.setAdapter(viewmodel.cagetoryAdapter);
+        binding.rvCagetory.setHasFixedSize(true);
+        binding.rvCagetory.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.HORIZONTAL, false));
     }
 
     private void initSilde() {
@@ -105,19 +113,53 @@ public class HomeFragment extends BaseFragment<FragHomeBinding,HomeFragViewModel
                 adapter.renewItems(sliderItems);
             }
         });
-        viewmodel.getArrCollection().observe(this, new Observer<ArrayList<Product>>() {
+        viewmodel.getArrFlashSale(getContext()).observe(this, new Observer<List<Product>>() {
             @Override
-            public void onChanged(ArrayList<Product> products) {
-                viewmodel.CollectionAdapter.setList(products);
+            public void onChanged(List<Product> products) {
+                viewmodel.flashSaleAdapter.setList((ArrayList<Product>) products);
+                viewmodel.flashSaleAdapter.setCallback(new FlashSaleCallback() {
+                    @Override
+                    public void onCLickProduct(Product product) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("product", product);
+                        getControler().navigate(R.id.action_navigationShop_to_DetailFragment,bundle);
+                    }
+                });
             }
         });
-        viewmodel.getArrToptrend().observe(this, new Observer<ArrayList<Product>>() {
+        viewmodel.getArrCagetory(getContext()).observe(this, new Observer<List<Cagetory>>() {
             @Override
-            public void onChanged(ArrayList<Product> products) {
-                viewmodel.ToptrendAdapter.setList(products);
+            public void onChanged(List<Cagetory> cagetories) {
+                viewmodel.cagetoryAdapter.setList((ArrayList<Cagetory>) cagetories);
+                viewmodel.cagetoryAdapter.setCallback(new CagetoryCallback() {
+                    @Override
+                    public void onCagetoryCLick(Cagetory cagetory) {
+                        Toast.makeText(getActivity(), "Click:" + cagetory.getNametype(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+        viewmodel.getArrRecomendProduct(getContext()).observe(this, new Observer<List<Product>>() {
+            @Override
+            public void onChanged(List<Product> products) {
+                viewmodel.productAdapter.setList((ArrayList<Product>) products);
+                viewmodel.productAdapter.setCallback(new FlashSaleCallback() {
+                    @Override
+                    public void onCLickProduct(Product product) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("product", product);
+                        getControler().navigate(R.id.action_navigationShop_to_DetailFragment,bundle);
+                    }
+                });
             }
         });
         binding.tvShowAllToptrend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.productFragment);
+            }
+        });
+        binding.tvShowAllCollection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.productFragment);

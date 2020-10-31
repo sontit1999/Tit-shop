@@ -11,6 +11,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 public abstract class BaseFragment<B extends ViewDataBinding,VM extends BaseViewmodel> extends Fragment {
     protected B binding;
@@ -38,5 +40,8 @@ public abstract class BaseFragment<B extends ViewDataBinding,VM extends BaseView
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewmodel = ViewModelProviders.of(getActivity()).get(getViewmodel());
+    }
+    public NavController getControler(){
+        return NavHostFragment.findNavController(this);
     }
 }

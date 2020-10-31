@@ -33,7 +33,7 @@
                     android:id="@+id/tvDesscription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{product.description}"
+                    android:text="@{product.mota}"
                     android:textColor="@color/colorGrey"
                     android:textSize="@dimen/textview_content" />
             </LinearLayout>

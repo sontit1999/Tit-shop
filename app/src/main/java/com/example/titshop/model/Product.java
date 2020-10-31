@@ -1,25 +1,42 @@
 package com.example.titshop.model;
 
-public class Product {
-    String name;
-    String imageUrl;
-    String price;
-    String description;
-    String type;
-    String number;
-    float rating;
+import java.io.Serializable;
+
+public class Product implements Serializable {
+
+    private String id;
+
+    private String name;
+
+    private String mota;
+
+    private String gia;
+
+    private String linkanh;
+
+    private String numberbuy;
+
+    private String idtype;
 
     public Product() {
     }
 
-    public Product(String name, String imageUrl, String price, String description, String type, String number, float rating) {
+    public Product(String id, String name, String mota, String gia, String linkanh, String numberbuy, String idtype) {
+        this.id = id;
         this.name = name;
-        this.imageUrl = imageUrl;
-        this.price = price;
-        this.description = description;
-        this.type = type;
-        this.number = number;
-        this.rating = rating;
+        this.mota = mota;
+        this.gia = gia;
+        this.linkanh = linkanh;
+        this.numberbuy = numberbuy;
+        this.idtype = idtype;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -30,51 +47,43 @@ public class Product {
         this.name = name;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getMota() {
+        return mota;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setMota(String mota) {
+        this.mota = mota;
     }
 
-    public String getPrice() {
-        return price;
+    public String getGia() {
+        return gia;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setGia(String gia) {
+        this.gia = gia;
     }
 
-    public String getDescription() {
-        return description;
+    public String getLinkanh() {
+        return linkanh;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setLinkanh(String linkanh) {
+        this.linkanh = linkanh;
     }
 
-    public String getType() {
-        return type;
+    public String getNumberbuy() {
+        return numberbuy;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setNumberbuy(String numberbuy) {
+        this.numberbuy = numberbuy;
     }
 
-    public String getNumber() {
-        return number;
+    public String getIdtype() {
+        return idtype;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public float getRating() {
-        return rating;
-    }
-
-    public void setRating(float rating) {
-        this.rating = rating;
+    public void setIdtype(String idtype) {
+        this.idtype = idtype;
     }
 }

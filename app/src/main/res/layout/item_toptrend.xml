@@ -23,7 +23,7 @@
                 android:layout_height="@dimen/height_item_toptrend"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/bg"
-                bind:imageUrl="@{product.imageUrl}"></ImageView>
+                bind:imageUrl="@{product.linkanh}"></ImageView>
 
             <TextView
                 android:id="@+id/tvName"
@@ -44,7 +44,7 @@
                 android:maxLength="30"
                 android:layout_toRightOf="@id/ivProduct"
                 android:padding="7dp"
-                android:text="@{product.price}"
+                android:text="@{product.gia}"
                 android:textColor="@color/colorGrey"
                 android:textSize="@dimen/textview_small" />
         </RelativeLayout>

@@ -20,7 +20,7 @@
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/bg"
-                bind:imageUrl="@{carditem.product.imageUrl}"></ImageView>
+                bind:imageUrl="@{carditem.product.linkanh}"></ImageView>
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_toLeftOf="@id/llNumber"
@@ -47,7 +47,7 @@
                     android:maxLength="30"
                     android:layout_toRightOf="@id/ivProduct"
                     android:padding="7dp"
-                    bind:monney="@{carditem.product.price}"
+                    bind:monney="@{carditem.product.gia}"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/textview_small" />
                 <TextView

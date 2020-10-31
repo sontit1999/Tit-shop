@@ -56,7 +56,7 @@ public class InforProductViewModel extends BaseViewmodel {
                 "                \"\\n\" +\n" +
                 "                \"Form suông, kết hợp màu sắc cá tính đem lại sự tươi mới\\n\" +\n" +
                 "                \"\\n\" +\n" +
-                "                \"Kiểu dáng phá cách, tối giản và hiện đại","dress","99",4.5f));
+                "                \"Kiểu dáng phá cách, tối giản và hiện đại","dress","99","4"));
         return product;
     }
 }

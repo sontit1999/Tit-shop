@@ -2,6 +2,7 @@ package com.example.titshop.base;
 
 
 import android.content.res.ColorStateList;
+import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,6 +43,25 @@ public class BingdingUtils {
     public static void size(TextView view, String size) {
         view.setText("Size: " + size);
 
+    }
+    @BindingAdapter({"bind:discount"})
+    public static void loadDiscount(TextView view, String discount) {
+        view.setText("Giảm\n" + discount);
+        view.setGravity(Gravity.CENTER);
+    }
+    @BindingAdapter({"bind:numberSale"})
+    public static void loadNumberSale(TextView view, String numberSale) {
+        view.setText("Đã bán " + numberSale);
+        view.setGravity(Gravity.CENTER);
+    }
+    @BindingAdapter({"bind:Price"})
+    public static void loadPrice(TextView view, String Price) {
+        view.setText( Price + " đ");
+        view.setGravity(Gravity.CENTER);
+    }
+    @BindingAdapter({"bind:PriceCart"})
+    public static void loadPriceCart(TextView view, String PriceCart) {
+        view.setText( PriceCart + " đ");
     }
     @BindingAdapter({"bind:imageUrlResize"})
     public static void loadImageResize(ImageView view, String imageUrl) {

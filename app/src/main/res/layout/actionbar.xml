@@ -9,7 +9,7 @@
         android:layout_height="wrap_content">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:background="@color/colorWhite"
+            android:background="@color/colorMain"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|snap|enterAlways"
@@ -28,6 +28,7 @@
                     <ImageView
                         android:id="@+id/ivIcon"
                         android:layout_centerVertical="true"
+                        android:tint="@color/colorWhite"
                         android:src="@drawable/ic_chevron_left_black_24dp"
                         android:layout_width="@dimen/margin_30dp_"
                         android:layout_height="@dimen/margin_30dp_"/>
@@ -40,7 +41,7 @@
                         android:layout_toLeftOf="@id/llFeature"
                         android:layout_marginLeft="@dimen/margin_10dp_"
                         android:textSize="@dimen/textview_content"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@color/colorWhite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -54,6 +55,7 @@
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/ivCart"
                         android:layout_marginRight="@dimen/margin_15dp_"
+                        android:tint="@color/colorWhite"
                         android:src="@drawable/ic_favorite_black_24dp"
                         android:layout_width="@dimen/margin_25dp_"
                         android:layout_height="@dimen/margin_25dp_"/>
@@ -62,6 +64,7 @@
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/ivMore"
                         android:layout_marginRight="@dimen/margin_15dp_"
+                        android:tint="@color/colorWhite"
                         android:src="@drawable/ic_shopping_cart_black_24dp"
                         android:layout_width="@dimen/margin_25dp_"
                         android:layout_height="@dimen/margin_25dp_"/>
@@ -70,6 +73,7 @@
                         android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="@dimen/margin_5dp_"
+                        android:tint="@color/colorWhite"
                         android:src="@drawable/ic_more_horiz_black_24dp"
                         android:layout_width="@dimen/margin_25dp_"
                         android:layout_height="@dimen/margin_25dp_"/>

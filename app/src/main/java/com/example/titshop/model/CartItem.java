@@ -48,6 +48,6 @@ public class CartItem {
 
     }
     public float pay(){
-        return Integer.parseInt(getNumberItem()) * Float.parseFloat(product.price);
+        return Integer.parseInt(getNumberItem()) * Float.parseFloat(product.getGia());
     }
 }

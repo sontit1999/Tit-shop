@@ -22,4 +22,7 @@
     <dimen name="heightitemCollection">250dp</dimen>
     <dimen name="heighCover">200dp</dimen>
     <dimen name="heighAvatar">100dp</dimen>
+    <dimen name="txt_size_content">16sp</dimen>
+    <dimen name="txt_size_content_small">13sp</dimen>
+    <dimen name="txt_size_title">20sp</dimen>
 </resources>

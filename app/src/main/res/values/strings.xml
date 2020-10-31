@@ -55,7 +55,7 @@
     <string name="nameproductSample">Eva Suit Jacket</string>
     <string name="samplePrice">$208.99</string>
     <string name="showall">Show all</string>
-    <string name="collection">Designer Collection</string>
+    <string name="collection">Flash Sale</string>
     <string name="toptrend">Top Trends</string>
     <string-array name="payMehthod">
         <item>Online payment</item>

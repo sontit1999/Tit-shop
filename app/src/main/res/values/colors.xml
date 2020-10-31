@@ -14,4 +14,5 @@
     <color name="colorbgLoginRegister">#e6ded7</color>
     <color name="colorBlueLight">#42A5F5</color>
     <color name="colorBlue">#a2e0e7</color>
+    <color name="colorMain">#FF5722</color>
 </resources>

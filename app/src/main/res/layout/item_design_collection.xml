@@ -18,7 +18,7 @@
             <ImageView
                 android:id="@+id/ivProduct"
                 android:src="@mipmap/bg"
-                bind:imageUrl="@{product.imageUrl}"
+                bind:imageUrl="@{product.linkanh}"
                 android:scaleType="centerCrop"
                 android:layout_width="@dimen/size_item_collection"
                 android:layout_height="@dimen/size_item_collection"></ImageView>
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/tvPrice"
-                android:text="@{product.price}"
+                android:text="@{product.gia}"
                 android:textColor="@color/colorGrey"
                 android:padding="7dp"
                 android:textSize="@dimen/textview_small"

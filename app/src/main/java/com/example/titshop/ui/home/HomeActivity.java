@@ -1,7 +1,9 @@
 package com.example.titshop.ui.home;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -69,7 +72,9 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
     @Override
     public void setBindingViewmodel() {
        binding.setViewmodel(viewmodel);
+
        setuptToolbar();
+       changeColor(R.color.colorMain);
         setUpNavigation();
          event();
          // test writo to database
@@ -89,7 +94,15 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         setSupportActionBar(binding.actionBar.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
+    public void changeColor(int resourseColor) {
+        if (Build.VERSION.SDKg_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), resourseColor));
+        }
 
+        ActionBar bar = getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(resourseColor)));
+
+    }
     private void event() {
         binding.actionBar.ivIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +120,6 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         binding.actionBar.ivWishlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                rePlaceFragment(new WishLishFragment());
                 Navigation.findNavController(HomeActivity.this, R.id.nav_host)
                         .navigate(R.id.wishLishFragment);
             }
@@ -203,10 +215,10 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         //get data
         final ArrayList<CartItem> arr = new ArrayList<>();
 
-        arr.add(new CartItem(new Product(" Korean Style Women","https://my-test-11.slatic.net/p/7/kobwa-korean-style-women-fashion-casual-pu-leather-ladies-handbag-shoulder-bucket-tote-bag-brown-8138-099175611-084e0414bbec596b0199d890d826bd3b-.jpg_600x600q80.jpg","69","x","dress","99",4.5f),"XS","25"));
-        arr.add(new CartItem(new Product("Bat sloweet wolan","https://ae01.alicdn.com/kf/HTB1DP_RXWSs3KVjSZPiq6AsiVXa5/2020-Plus-Size-Bat-Sleeved-Woolen-Coat-Scarf-Collar-Jackets-Women-Winter-Fashion-Outerwear-Thicker-Loose.jpg","24.47","x","dress","132",4.5f),"XL","2"));
-        arr.add(new CartItem(new Product("T-shrit ladies","https://i.pinimg.com/736x/fc/07/d4/fc07d472f7a97762b5e2374446a8543f.jpg","24.89","x","x","23",4.5f),"M","20"));
-        arr.add(new CartItem(new Product("Big Deal Kevin","https://ae01.alicdn.com/kf/HTB1MftjbdzvK1RkSnfoq6zMwVXan/KENVY-Brand-Fashion-Women-s-High-end-Luxury-Winter-Contrast-Color-Jacquard-Knitted-Cotton-Casual-Sweater.jpg","11.89","x","x","23",4.5f),"M","12"));
+        arr.add(new CartItem(new Product(" Korean Style Women","https://my-test-11.slatic.net/p/7/kobwa-korean-style-women-fashion-casual-pu-leather-ladies-handbag-shoulder-bucket-tote-bag-brown-8138-099175611-084e0414bbec596b0199d890d826bd3b-.jpg_600x600q80.jpg","69","5000","dress","99","4"),"XS","25"));
+        arr.add(new CartItem(new Product("Bat sloweet wolan","https://ae01.alicdn.com/kf/HTB1DP_RXWSs3KVjSZPiq6AsiVXa5/2020-Plus-Size-Bat-Sleeved-Woolen-Coat-Scarf-Collar-Jackets-Women-Winter-Fashion-Outerwear-Thicker-Loose.jpg","24.47","5000","dress","132","4"),"XL","2"));
+        arr.add(new CartItem(new Product("T-shrit ladies","https://i.pinimg.com/736x/fc/07/d4/fc07d472f7a97762b5e2374446a8543f.jpg","24.89","5000","x","23","4"),"M","20"));
+        arr.add(new CartItem(new Product("Big Deal Kevin","https://ae01.alicdn.com/kf/HTB1MftjbdzvK1RkSnfoq6zMwVXan/KENVY-Brand-Fashion-Women-s-High-end-Luxury-Winter-Contrast-Color-Jacquard-Knitted-Cotton-Casual-Sweater.jpg","11.89","5000","x","23","4"),"M","12"));
 
         cartAdapter.setList(arr);
         tvNumberitem.setText(arr.size() + " items");
