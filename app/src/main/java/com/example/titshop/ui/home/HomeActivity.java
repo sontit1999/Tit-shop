@@ -95,7 +95,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
     public void changeColor(int resourseColor) {
-        if (Build.VERSION.SDKg_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), resourseColor));
         }
 
