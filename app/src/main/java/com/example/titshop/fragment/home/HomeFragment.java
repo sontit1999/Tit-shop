@@ -61,17 +61,28 @@ public class HomeFragment extends BaseFragment<FragHomeBinding,HomeFragViewModel
         binding.setViewmodel(viewmodel);
         initSilde();
         initRecyclerview();
-        event();
+
     }
 
     private void event() {
-        binding.tvShowAllCollection.setOnClickListener(new View.OnClickListener() {
+        binding.tvShowAllToptrend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Cagetory cagetory = new Cagetory("999","Top Trend","xx","xx");
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("type", cagetory);
+                getControler().navigate(R.id.action_homeFragment_to_productFragment,bundle);
             }
         });
-
+        binding.tvShowAllFlashSale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cagetory cagetory = new Cagetory("888","Flash sale","xx","xx");
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("type", cagetory);
+                getControler().navigate(R.id.action_homeFragment_to_productFragment,bundle);
+            }
+        });
     }
 
     private void initRecyclerview() {
@@ -134,7 +145,9 @@ public class HomeFragment extends BaseFragment<FragHomeBinding,HomeFragViewModel
                 viewmodel.cagetoryAdapter.setCallback(new CagetoryCallback() {
                     @Override
                     public void onCagetoryCLick(Cagetory cagetory) {
-                        Toast.makeText(getActivity(), "Click:" + cagetory.getNametype(), Toast.LENGTH_SHORT).show();
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("type", cagetory);
+                        getControler().navigate(R.id.action_homeFragment_to_productFragment,bundle);
                     }
                 });
             }
@@ -153,18 +166,7 @@ public class HomeFragment extends BaseFragment<FragHomeBinding,HomeFragViewModel
                 });
             }
         });
-        binding.tvShowAllToptrend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.productFragment);
-            }
-        });
-        binding.tvShowAllCollection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.productFragment);
-            }
-        });
+        event();
     }
 
     @Override

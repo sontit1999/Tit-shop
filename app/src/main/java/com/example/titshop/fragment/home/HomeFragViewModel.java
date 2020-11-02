@@ -56,11 +56,6 @@ public class HomeFragViewModel extends BaseViewmodel {
     }
      public MutableLiveData<List<SliderItem>> getArrItem(){
          List<SliderItem> arr = new ArrayList<>();
-//         arr.add(new SliderItem("Đang giảm giá nè . Mua đi !!!","https://khoedep24gio.com/wp-content/uploads/2019/06/shop-ban-ao-doi-dep-o-ha-noi-baduy-shop-2.png"));
-//         arr.add(new SliderItem("Đang giảm giá nè . Mua đi !!!","https://bizweb.dktcdn.net/100/104/183/products/quan-tay-baggy-ngan-hong.png?v=1470410349437"));
-//         arr.add(new SliderItem("Đang giảm giá nè . Mua đi !!!","https://r8zlusvr.rocketcdn.com/templates/selectfashion.co.uk.new/assets/images/home/main-page-pods/pod1a-coats111.jpg"));
-//         arr.add(new SliderItem("Đang giảm giá nè . Mua đi !!!","https://iqueenfashion.vn/uploads/98/637081193496541818-DSC09555.jpg"));
-
          arr.add(new SliderItem("Đang giảm giá nè . Mua đi !!!","https://cf.shopee.vn/file/67e108f93ec4f9caa5fe4fb1853fc7e9"));
          arr.add(new SliderItem("Đang giảm giá nè . Mua đi !!!","https://magiamgiashopee.com/wp-content/uploads/2020/02/shopee-sieu-sale-11-11-1024x535-1.jpg"));
          arr.add(new SliderItem("Đang giảm giá nè . Mua đi !!!","https://magiamgiashopee.vn/wp-content/uploads/2019/07/Si%C3%AAu-Sale-Freeship-Shopee.png.webp"));
