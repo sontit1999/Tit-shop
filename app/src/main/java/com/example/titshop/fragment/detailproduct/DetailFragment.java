@@ -22,6 +22,7 @@ import com.example.titshop.fragment.inforproduct.InforProductFragment;
 import com.example.titshop.fragment.profile.ProfileFragment;
 import com.example.titshop.fragment.review.ReviewFragment;
 import com.example.titshop.fragment.shipping.ShippingFragment;
+import com.example.titshop.model.CommentResponse;
 import com.example.titshop.model.Product;
 
 import java.util.ArrayList;
@@ -64,15 +65,15 @@ public class DetailFragment extends BaseFragment<FragDetailproductBinding,Detail
         binDATA();
         event();
 
-//        viewmodel.getArrComment(getContext(),Integer.parseInt(product.getId())).observe(this, new Observer<List<CommentResponse>>() {
-//            @Override
-//            public void onChanged(List<CommentResponse> commentResponses) {
-//                viewmodel.commentAdapter.setList((ArrayList<CommentResponse>) commentResponses);
-//            }
-//        });
+        viewmodel.getArrComment(getContext(),Integer.parseInt(product.getId())).observe(this, new Observer<List<CommentResponse>>() {
+            @Override
+            public void onChanged(List<CommentResponse> commentResponses) {
+                viewmodel.commentAdapter.setList((ArrayList<CommentResponse>) commentResponses);
+            }
+        });
     }
     private void setUpreCyclerviewComment() {
-      //  binding.rvComment.setAdapter(viewmodel.commentAdapter);
+        binding.rvComment.setAdapter(viewmodel.commentAdapter);
         binding.rvComment.setHasFixedSize(true);
         binding.rvComment.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));
     }

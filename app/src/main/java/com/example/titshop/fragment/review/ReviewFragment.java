@@ -38,11 +38,6 @@ public class ReviewFragment extends BaseFragment<FragReviewBinding,ReviewViewMod
 
     @Override
     public void ViewCreated() {
-        viewmodel.getArrComment().observe(this, new Observer<ArrayList<Comment>>() {
-            @Override
-            public void onChanged(ArrayList<Comment> comments) {
-                viewmodel.commentAdapter.setList(comments);
-            }
-        });
+
     }
 }
