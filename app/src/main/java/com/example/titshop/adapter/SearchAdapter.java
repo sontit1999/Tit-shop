@@ -4,10 +4,17 @@ import com.example.titshop.BR;
 import com.example.titshop.R;
 import com.example.titshop.base.BaseAdapter;
 import com.example.titshop.base.CBAdapter;
+import com.example.titshop.callback.FlashSaleCallback;
 import com.example.titshop.databinding.ItemSearchBinding;
 import com.example.titshop.model.Product;
 
 public class SearchAdapter extends BaseAdapter<Product, ItemSearchBinding> {
+
+
+    FlashSaleCallback callback;
+    public void setCallback(FlashSaleCallback callback) {
+        this.callback = callback;
+    }
     @Override
     public int getLayoutId() {
         return R.layout.item_search;
@@ -20,11 +27,11 @@ public class SearchAdapter extends BaseAdapter<Product, ItemSearchBinding> {
 
     @Override
     public int getIdVariableOnclick() {
-        return 0;
+        return BR.callback;
     }
 
     @Override
     public CBAdapter getOnclick() {
-        return null;
+        return callback;
     }
 }

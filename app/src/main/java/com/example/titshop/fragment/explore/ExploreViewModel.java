@@ -25,10 +25,12 @@ public class ExploreViewModel extends BaseViewmodel {
     }
 
     private String urlUrlAdvertise2 = "https://previews.123rf.com/images/ammentorp/ammentorp1710/ammentorp171000656/88933120-outdoor-shot-of-beautiful-woman-with-many-shopping-bags-asian-female-model-walking-on-the-city-stree.jpg";
-    private MutableLiveData<ArrayList<Product>> arrProductsearch = new MutableLiveData<>();
-    public MutableLiveData<ArrayList<Product>> getArrToptrend(){
+
+    public MutableLiveData<ArrayList<Product>> getArrProductsearch() {
         return arrProductsearch;
     }
+
+    private MutableLiveData<ArrayList<Product>> arrProductsearch = new MutableLiveData<>();
     public void setListSearch(ArrayList<Product> arr){
         arrProductsearch.postValue(arr);
     }

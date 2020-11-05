@@ -5,20 +5,27 @@
         <variable
             name="product"
             type="com.example.titshop.model.Product" />
+        <variable
+            name="callback"
+            type="com.example.titshop.callback.FlashSaleCallback" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{()->callback.onCLickProduct(product)}"
         bind:cardUseCompatPadding="true"
         bind:cardCornerRadius="7dp"
         bind:cardElevation="3dp">
         <RelativeLayout
-            android:layout_width="@dimen/size300dp"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/height_item_toptrend">
+
             <ImageView
                 android:id="@+id/ivProduct"
-                android:layout_width="@dimen/height_item_toptrend"
-                android:layout_height="@dimen/height_item_toptrend"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+               android:layout_centerVertical="true"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/bg"
                 bind:imageUrl="@{product.linkanh}"></ImageView>
@@ -26,7 +33,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_5dp_"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/ivProduct"
                 android:padding="@dimen/margin_5dp_"
                 android:text="@{product.name}"
@@ -39,10 +46,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvName"
                 android:maxLength="30"
+                android:layout_marginTop="@dimen/margin_15dp_"
                 android:layout_toRightOf="@id/ivProduct"
                 android:padding="7dp"
                 android:text="@{product.gia}"
-                android:textColor="@color/colorGrey"
+                bind:PriceCart="@{product.gia}"
+                android:textColor="@color/colorMain"
                 android:textSize="@dimen/textview_small" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

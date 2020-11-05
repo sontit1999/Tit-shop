@@ -186,7 +186,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             binding.actionBar.title.setVisibility(View.VISIBLE);
             binding.actionBar.title.setText("Profile");
             binding.actionBar.llFeature.setVisibility(View.VISIBLE);
-            binding.actionBar.ivWishlist.setVisibility(View.VISIBLE);
+            binding.actionBar.ivWishlist.setVisibility(View.INVISIBLE);
             binding.actionBar.ivCart.setVisibility(View.VISIBLE);
         }
         if(fragment instanceof DetailFragment){
