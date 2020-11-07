@@ -1,7 +1,8 @@
-package com.example.titshop.model;
+package com.example.titshop.roomdb;
 
-public class CartItem {
-    String numberItem;
+public class ProductView {
+
+
     private String id;
 
     private String name;
@@ -15,11 +16,10 @@ public class CartItem {
     private String numberbuy;
 
     private String idtype;
-    public CartItem() {
+    public ProductView() {
     }
 
-    public CartItem(String numberItem, String id, String name, String mota, String gia, String linkanh, String numberbuy, String idtype) {
-        this.numberItem = numberItem;
+    public ProductView(String id, String name, String mota, String gia, String linkanh, String numberbuy, String idtype) {
         this.id = id;
         this.name = name;
         this.mota = mota;
@@ -27,14 +27,6 @@ public class CartItem {
         this.linkanh = linkanh;
         this.numberbuy = numberbuy;
         this.idtype = idtype;
-    }
-
-    public String getNumberItem() {
-        return numberItem;
-    }
-
-    public void setNumberItem(String numberItem) {
-        this.numberItem = numberItem;
     }
 
     public String getId() {
@@ -91,19 +83,5 @@ public class CartItem {
 
     public void setIdtype(String idtype) {
         this.idtype = idtype;
-    }
-
-    public void tang(){
-        int numberNew = Integer.parseInt(this.numberItem) + 1;
-        this.numberItem = numberNew + "";
-    }
-    public void giam(){
-        int now = Integer.parseInt(this.numberItem);
-        int numberNew = now - 1;
-        this.numberItem = numberNew + "";
-
-    }
-    public float pay(){
-        return Integer.parseInt(getNumberItem()) * Float.parseFloat(gia);
     }
 }

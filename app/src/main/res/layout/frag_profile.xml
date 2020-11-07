@@ -73,6 +73,7 @@
                     <RelativeLayout
                         android:gravity="center_vertical"
                         android:padding="@dimen/margin_15dp_"
+                        android:id="@+id/btnWait"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
@@ -105,6 +106,7 @@
                     <RelativeLayout
                         android:gravity="center_vertical"
                         android:padding="@dimen/margin_15dp_"
+                        android:id="@+id/btnLike"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
@@ -137,6 +139,7 @@
                     <RelativeLayout
                         android:gravity="center_vertical"
                         android:padding="@dimen/margin_15dp_"
+                        android:id="@+id/btnView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
@@ -169,6 +172,7 @@
                     <RelativeLayout
                         android:gravity="center_vertical"
                         android:padding="@dimen/margin_15dp_"
+                        android:id="@+id/btnBought"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
@@ -199,6 +203,7 @@
                             android:layout_height="@dimen/margin_25dp_"/>
                     </RelativeLayout>
                     <RelativeLayout
+                        android:id="@+id/btnLogout"
                         android:gravity="center_vertical"
                         android:padding="@dimen/margin_15dp_"
                         android:layout_width="match_parent"

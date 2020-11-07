@@ -33,7 +33,11 @@
         android:id="@+id/navigationProfile"
         tools:layout="@layout/frag_profile"
         android:name="com.example.titshop.fragment.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_navigationProfile_to_wishLishFragment"
+            app:destination="@id/wishLishFragment" />
+    </fragment>
     <fragment
         android:id="@+id/productFragment"
         tools:layout="@layout/frag_product"

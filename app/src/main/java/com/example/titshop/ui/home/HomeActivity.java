@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,6 +46,7 @@ import com.example.titshop.fragment.wishlist.WishLishFragment;
 import com.example.titshop.model.CartItem;
 import com.example.titshop.model.Product;
 import com.example.titshop.model.SubProduct;
+import com.example.titshop.ultis.Constant;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DatabaseReference;
@@ -120,8 +122,10 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         binding.actionBar.ivWishlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("type", Constant.typeLike);
                 Navigation.findNavController(HomeActivity.this, R.id.nav_host)
-                        .navigate(R.id.wishLishFragment);
+                        .navigate(R.id.wishLishFragment,bundle);
             }
         });
         binding.actionBar.ivMore.setOnClickListener(new View.OnClickListener() {
@@ -200,6 +204,27 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             binding.actionBar.title.setText("Back");
         }
     }
+
+    @Override
+    public void onViewFragment() {
+        binding.actionBar.title.setText("Sản phẩm đã xem");
+    }
+
+    @Override
+    public void onBoughtFragment() {
+        binding.actionBar.title.setText("Sản phẩm đã mua");
+    }
+
+    @Override
+    public void onWaitFragment() {
+        binding.actionBar.title.setText("Sản phẩm đang chờ");
+    }
+
+    @Override
+    public void onLikeFragment() {
+        binding.actionBar.title.setText("Sản phẩm đã thích");
+    }
+
     public void showCart(){
         final View view = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_cart,null);
         // ánh xạ
@@ -215,10 +240,6 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         //get data
         final ArrayList<CartItem> arr = new ArrayList<>();
 
-        arr.add(new CartItem(new Product(" Korean Style Women","https://my-test-11.slatic.net/p/7/kobwa-korean-style-women-fashion-casual-pu-leather-ladies-handbag-shoulder-bucket-tote-bag-brown-8138-099175611-084e0414bbec596b0199d890d826bd3b-.jpg_600x600q80.jpg","69","5000","dress","99","4"),"XS","25"));
-        arr.add(new CartItem(new Product("Bat sloweet wolan","https://ae01.alicdn.com/kf/HTB1DP_RXWSs3KVjSZPiq6AsiVXa5/2020-Plus-Size-Bat-Sleeved-Woolen-Coat-Scarf-Collar-Jackets-Women-Winter-Fashion-Outerwear-Thicker-Loose.jpg","24.47","5000","dress","132","4"),"XL","2"));
-        arr.add(new CartItem(new Product("T-shrit ladies","https://i.pinimg.com/736x/fc/07/d4/fc07d472f7a97762b5e2374446a8543f.jpg","24.89","5000","x","23","4"),"M","20"));
-        arr.add(new CartItem(new Product("Big Deal Kevin","https://ae01.alicdn.com/kf/HTB1MftjbdzvK1RkSnfoq6zMwVXan/KENVY-Brand-Fashion-Women-s-High-end-Luxury-Winter-Contrast-Color-Jacquard-Knitted-Cotton-Casual-Sweater.jpg","11.89","5000","x","23","4"),"M","12"));
 
         cartAdapter.setList(arr);
         tvNumberitem.setText(arr.size() + " items");
@@ -251,7 +272,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
 
             @Override
             public void onProductClick(CartItem cartItem) {
-                Toast.makeText(HomeActivity.this, "Click "  + cartItem.getProduct().getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Click "  + cartItem.getName(), Toast.LENGTH_SHORT).show();
             }
         });
         // get cart
@@ -269,6 +290,5 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             }
         });
     }
-
 }
 

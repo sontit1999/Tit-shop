@@ -1,6 +1,7 @@
 package com.example.titshop.fragment.wishlist;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,10 +16,12 @@ import com.example.titshop.callback.ActionbarListener;
 import com.example.titshop.callback.WishlishCallback;
 import com.example.titshop.databinding.FragWishlistBinding;
 import com.example.titshop.model.Product;
+import com.example.titshop.ultis.Constant;
 
 import java.util.ArrayList;
 
 public class WishLishFragment extends BaseFragment<FragWishlistBinding, WishListViewModel> {
+    String type = "";
     ActionbarListener listener;
     @Override
     public Class<WishListViewModel> getViewmodel() {
@@ -40,6 +43,26 @@ public class WishLishFragment extends BaseFragment<FragWishlistBinding, WishList
     public void setBindingViewmodel() {
        binding.setViewmodel(viewmodel);
        initRecyclerview();
+       // get type frag
+        Bundle bundle = getArguments();
+        if(bundle!=null){
+            type = bundle.getString("type", Constant.typeLike);
+        }
+        bindTitle();
+    }
+
+    private void bindTitle() {
+       switch (type){
+           case Constant.typeBought:
+               listener.onBoughtFragment();
+               break;
+           case Constant.typeView:
+               listener.onViewFragment();
+               break;
+           case Constant.typeWait:
+               listener.onWaitFragment();
+               break;
+       }
     }
 
     private void initRecyclerview() {
@@ -74,6 +97,6 @@ public class WishLishFragment extends BaseFragment<FragWishlistBinding, WishList
     @Override
     public void onResume() {
         super.onResume();
-        listener.onResumFragment(this);
+       // listener.onResumFragment(this);
     }
 }

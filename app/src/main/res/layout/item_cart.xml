@@ -20,7 +20,7 @@
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/bg"
-                bind:imageUrl="@{carditem.product.linkanh}"></ImageView>
+                bind:imageUrl="@{carditem.linkanh}"></ImageView>
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_toLeftOf="@id/llNumber"
@@ -35,7 +35,7 @@
                     android:layout_marginTop="@dimen/margin_5dp_"
                     android:layout_toRightOf="@id/ivProduct"
                     android:padding="@dimen/margin_5dp_"
-                    android:text="@{carditem.product.name}"
+                    android:text="@{carditem.name}"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/textview_content" />
 
@@ -47,19 +47,8 @@
                     android:maxLength="30"
                     android:layout_toRightOf="@id/ivProduct"
                     android:padding="7dp"
-                    bind:monney="@{carditem.product.gia}"
+                    bind:monney="@{carditem.gia}"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/textview_small" />
-                <TextView
-                    android:id="@+id/tvSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvName"
-                    android:maxLength="30"
-                    android:layout_toRightOf="@id/ivProduct"
-                    android:padding="7dp"
-                    bind:size="@{carditem.size}"
-                    android:textColor="@color/colorGrey"
                     android:textSize="@dimen/textview_small" />
             </LinearLayout>
             <LinearLayout
