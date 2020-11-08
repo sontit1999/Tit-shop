@@ -1,9 +1,15 @@
 package com.example.titshop.model;
 
-public class CartItem {
-    String numberItem;
-    private String id;
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "Cart")
+public class CartItem {
+
+    @PrimaryKey
+    @NonNull private String id;
+    String numberItem;
     private String name;
 
     private String mota;

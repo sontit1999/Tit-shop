@@ -46,6 +46,7 @@ import com.example.titshop.fragment.wishlist.WishLishFragment;
 import com.example.titshop.model.CartItem;
 import com.example.titshop.model.Product;
 import com.example.titshop.model.SubProduct;
+import com.example.titshop.roomdb.CartDAO;
 import com.example.titshop.ultis.Constant;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -60,7 +61,7 @@ import java.util.zip.Inflater;
 public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel> implements ActionbarListener {
     RecyclerView recyclerViewCart;
     CartAdapter cartAdapter = new CartAdapter();
-
+    CartDAO cartDAO = null;
     @Override
     public Class<HomeViewModel> getViewmodel() {
         return HomeViewModel.class;
@@ -74,7 +75,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
     @Override
     public void setBindingViewmodel() {
        binding.setViewmodel(viewmodel);
-
+       initRoomDatabase();
        setuptToolbar();
        changeColor(R.color.colorMain);
         setUpNavigation();
@@ -224,7 +225,10 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
     public void onLikeFragment() {
         binding.actionBar.title.setText("Sản phẩm đã thích");
     }
-
+    private void initRoomDatabase() {
+        Constant.initDatabase(HomeActivity.this);
+        cartDAO = Constant.getDatabase().getCartDao();
+    }
     public void showCart(){
         final View view = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_cart,null);
         // ánh xạ
@@ -238,8 +242,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         recyclerViewCart.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerViewCart.setAdapter(cartAdapter);
         //get data
-        final ArrayList<CartItem> arr = new ArrayList<>();
-
+        final ArrayList<CartItem> arr = (ArrayList<CartItem>) cartDAO.getAllCart();
 
         cartAdapter.setList(arr);
         tvNumberitem.setText(arr.size() + " items");
@@ -251,9 +254,9 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
             public void ontang(CartItem cartItem) {
                 int pos = cartAdapter.getList().indexOf(cartItem);
                 cartItem.tang();
+                cartDAO.update(cartItem);
                 cartAdapter.updateItem(pos,cartItem);
                 tvTotalMoney.setText(cartAdapter.getTotal());
-               // Toast.makeText(HomeActivity.this, "Tang " + cartItem.getProduct().getName() + " tại postition " + cartAdapter.getList().indexOf(cartItem) , Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -262,8 +265,10 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
                 if(Integer.parseInt(cartItem.getNumberItem())>1){
                     cartItem.giam();
                     cartAdapter.updateItem(pos,cartItem);
+                    cartDAO.update(cartItem);
                     tvTotalMoney.setText(cartAdapter.getTotal());
                 }else{
+                    cartDAO.delete(cartItem);
                     cartAdapter.removeItem(pos);
                     tvTotalMoney.setText(cartAdapter.getTotal());
                     tvNumberitem.setText(cartAdapter.getList().size() + " items");

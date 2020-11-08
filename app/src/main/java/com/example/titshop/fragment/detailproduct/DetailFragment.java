@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.bumptech.glide.Glide;
 import com.example.titshop.R;
@@ -22,8 +23,12 @@ import com.example.titshop.fragment.inforproduct.InforProductFragment;
 import com.example.titshop.fragment.profile.ProfileFragment;
 import com.example.titshop.fragment.review.ReviewFragment;
 import com.example.titshop.fragment.shipping.ShippingFragment;
+import com.example.titshop.model.CartItem;
 import com.example.titshop.model.CommentResponse;
 import com.example.titshop.model.Product;
+import com.example.titshop.roomdb.AppDatabase;
+import com.example.titshop.roomdb.CartDAO;
+import com.example.titshop.ultis.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +36,7 @@ import java.util.List;
 public class DetailFragment extends BaseFragment<FragDetailproductBinding,DetailProductViewModel> {
     ActionbarListener listener;
     Product product = null;
+    CartDAO cartDAO = null;
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -51,6 +57,7 @@ public class DetailFragment extends BaseFragment<FragDetailproductBinding,Detail
     public void setBindingViewmodel() {
         binding.setViewmodel(viewmodel);
         Bundle bundle = getArguments();
+        initRoomDatabase();
         if(bundle!=null){
             product = (Product) bundle.getSerializable("product");
         }
@@ -87,7 +94,10 @@ public class DetailFragment extends BaseFragment<FragDetailproductBinding,Detail
             binding.tvPriceProduct.setText(product.getGia() + "vnđ");
         }
     }
-
+    private void initRoomDatabase() {
+        Constant.initDatabase(getContext());
+        cartDAO = Constant.getDatabase().getCartDao();
+    }
     private void event() {
         binding.ivLikeProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +108,9 @@ public class DetailFragment extends BaseFragment<FragDetailproductBinding,Detail
         binding.btnAddtoCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                CartItem  cartItem = new CartItem("1",product.getId(),product.getName(),product.getMota(),product.getGia(),product.getLinkanh(),product.getNumberbuy(),product.getIdtype());
+                     cartDAO.insert(cartItem);
+                Toast.makeText(getActivity(), "Đã thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
             }
         });
     }

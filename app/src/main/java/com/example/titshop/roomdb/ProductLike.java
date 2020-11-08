@@ -1,7 +1,13 @@
 package com.example.titshop.roomdb;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "ProductLike")
 public class ProductLike {
-    private String id;
+    @PrimaryKey
+    @NonNull private String id;
 
     private String name;
 
