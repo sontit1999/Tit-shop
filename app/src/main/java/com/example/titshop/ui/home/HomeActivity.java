@@ -242,8 +242,8 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding,HomeViewModel
         recyclerViewCart.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerViewCart.setAdapter(cartAdapter);
         //get data
-        final ArrayList<CartItem> arr = (ArrayList<CartItem>) cartDAO.getAllCart();
-
+        final ArrayList<CartItem> arr = (ArrayList<CartItem>) cartDAO.getAllCart() ;
+        Collections.reverse(arr);
         cartAdapter.setList(arr);
         tvNumberitem.setText(arr.size() + " items");
         tvTotalMoney.setText(cartAdapter.getTotal());

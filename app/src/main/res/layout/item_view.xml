@@ -3,17 +3,17 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="product"
-            type="com.example.titshop.roomdb.ProductLike" />
+            name="productview"
+            type="com.example.titshop.roomdb.ProductView" />
         <variable
             name="callback"
-            type="com.example.titshop.callback.WishlishCallback" />
+            type="com.example.titshop.callback.ProductViewCallback" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         bind:cardUseCompatPadding="true"
-        android:onClick="@{(view)->callback.onItemClick(view,product)}"
+        android:onClick="@{()->callback.onClickItem(productview)}"
         bind:cardCornerRadius="@dimen/margin_10dp_"
         bind:cardElevation="1dp">
         <RelativeLayout
@@ -25,7 +25,7 @@
                 android:layout_height="@dimen/height_item_toptrend"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/bg"
-                bind:imageUrl="@{product.linkanh}"></ImageView>
+                bind:imageUrl="@{productview.linkanh}"></ImageView>
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                 android:layout_marginTop="@dimen/margin_5dp_"
                 android:layout_toRightOf="@id/ivProduct"
                 android:padding="@dimen/margin_5dp_"
-                android:text="@{product.name}"
+                android:text="@{productview.name}"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textview_content" />
 
@@ -45,26 +45,8 @@
                 android:maxLength="30"
                 android:layout_toRightOf="@id/ivProduct"
                 android:padding="7dp"
-                bind:PriceCart="@{product.gia}"
+                bind:PriceCart="@{productview.gia}"
                 android:textColor="@color/colorGrey"
-                android:textSize="@dimen/textview_small" />
-            <TextView
-                android:id="@+id/tvMove"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_move"
-                android:layout_marginLeft="@dimen/margin_15dp_"
-                android:layout_marginTop="@dimen/margin_10dp_"
-                android:paddingLeft="@dimen/margin_15dp_"
-                android:paddingRight="@dimen/margin_15dp_"
-                android:paddingTop="@dimen/margin_5dp_"
-                android:paddingBottom="@dimen/margin_5dp_"
-                android:onClick="@{(view)->callback.onRemove(view,product)}"
-                android:layout_toRightOf="@id/ivProduct"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/margin_10dp_"
-                android:text="@string/move"
-                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textview_small" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

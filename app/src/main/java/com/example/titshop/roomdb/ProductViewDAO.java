@@ -18,7 +18,7 @@ public interface ProductViewDAO {
     @Delete
     public void delete(ProductView... productViews);
     @Query("select * from ProductView")
-    public List<ProductLike> getAllProduct();
+    public List<ProductView> getAllProduct();
     @Query("delete from ProductView")
     public void deleteAllProductView();
     @Query("select * from ProductView where id = :ID")

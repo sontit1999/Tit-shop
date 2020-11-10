@@ -28,6 +28,8 @@ import com.example.titshop.model.CommentResponse;
 import com.example.titshop.model.Product;
 import com.example.titshop.roomdb.AppDatabase;
 import com.example.titshop.roomdb.CartDAO;
+import com.example.titshop.roomdb.ProductLike;
+import com.example.titshop.roomdb.ProductView;
 import com.example.titshop.ultis.Constant;
 
 import java.util.ArrayList;
@@ -67,6 +69,9 @@ public class DetailFragment extends BaseFragment<FragDetailproductBinding,Detail
 
     @Override
     public void ViewCreated() {
+        // add to view product
+        ProductView productView = new ProductView(product.getId(),product.getName(),product.getMota(),product.getGia(),product.getLinkanh(),product.getNumberbuy(),product.getIdtype());
+        Constant.getDatabase().getProductViewDao().insert(productView);
         setUpreCyclerviewComment();
         // gán data lên view
         binDATA();
@@ -102,7 +107,9 @@ public class DetailFragment extends BaseFragment<FragDetailproductBinding,Detail
         binding.ivLikeProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Clik likes", Toast.LENGTH_SHORT).show();
+                ProductLike productLike = new ProductLike(product.getId(),product.getName(),product.getMota(),product.getGia(),product.getLinkanh(),product.getNumberbuy(),product.getIdtype());
+                Constant.getDatabase().getProductLikeDao().insert(productLike);
+                Toast.makeText(getActivity(), "Đã thêm vào sp ưa thích !", Toast.LENGTH_SHORT).show();
             }
         });
         binding.btnAddtoCart.setOnClickListener(new View.OnClickListener() {

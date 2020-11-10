@@ -4,21 +4,28 @@ import com.example.titshop.BR;
 import com.example.titshop.R;
 import com.example.titshop.base.BaseAdapter;
 import com.example.titshop.base.CBAdapter;
+import com.example.titshop.callback.ProductViewCallback;
 import com.example.titshop.callback.WishlishCallback;
-import com.example.titshop.databinding.ItemWishlistBinding;
-import com.example.titshop.model.Product;
-import com.example.titshop.roomdb.ProductLike;
+import com.example.titshop.databinding.ItemViewBinding;
+import com.example.titshop.roomdb.ProductView;
 
-public class WishlistAdapter extends BaseAdapter<ProductLike, ItemWishlistBinding> {
-    WishlishCallback callback;
+public class ViewedProductAdapter extends BaseAdapter<ProductView, ItemViewBinding> {
+
+
+    ProductViewCallback callback;
+
+    public void setCallback(ProductViewCallback callback) {
+        this.callback = callback;
+    }
+
     @Override
     public int getLayoutId() {
-        return R.layout.item_wishlist;
+        return R.layout.item_view;
     }
 
     @Override
     public int getIdVariable() {
-        return BR.product;
+        return BR.productview;
     }
 
     @Override
@@ -29,9 +36,5 @@ public class WishlistAdapter extends BaseAdapter<ProductLike, ItemWishlistBindin
     @Override
     public CBAdapter getOnclick() {
         return callback;
-    }
-
-    public void setCallback(WishlishCallback callback) {
-        this.callback = callback;
     }
 }

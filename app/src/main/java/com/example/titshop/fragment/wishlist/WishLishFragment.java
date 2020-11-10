@@ -13,12 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.titshop.R;
 import com.example.titshop.base.BaseFragment;
 import com.example.titshop.callback.ActionbarListener;
+import com.example.titshop.callback.ProductViewCallback;
 import com.example.titshop.callback.WishlishCallback;
 import com.example.titshop.databinding.FragWishlistBinding;
 import com.example.titshop.model.Product;
+import com.example.titshop.roomdb.ProductLike;
+import com.example.titshop.roomdb.ProductView;
 import com.example.titshop.ultis.Constant;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class WishLishFragment extends BaseFragment<FragWishlistBinding, WishListViewModel> {
     String type = "";
@@ -42,13 +46,11 @@ public class WishLishFragment extends BaseFragment<FragWishlistBinding, WishList
     @Override
     public void setBindingViewmodel() {
        binding.setViewmodel(viewmodel);
-       initRecyclerview();
        // get type frag
         Bundle bundle = getArguments();
         if(bundle!=null){
             type = bundle.getString("type", Constant.typeLike);
         }
-        bindTitle();
     }
 
     private void bindTitle() {
@@ -58,6 +60,23 @@ public class WishLishFragment extends BaseFragment<FragWishlistBinding, WishList
                break;
            case Constant.typeView:
                listener.onViewFragment();
+               binding.rvWishlist.setAdapter(viewmodel.viewedProductAdapter);
+               ArrayList<ProductView> arr = (ArrayList) Constant.getDatabase().getProductViewDao().getAllProduct();
+               Collections.reverse(arr);
+               viewmodel.viewedProductAdapter.setList(arr);
+               viewmodel.viewedProductAdapter.setCallback(new ProductViewCallback() {
+                   @Override
+                   public void onClickItem(ProductView productView) {
+                       Product product = new Product(productView.getId(),productView.getName(),productView.getMota(),productView.getGia(),productView.getLinkanh(),productView.getNumberbuy(),productView.getIdtype());
+                       Bundle bundle = new Bundle();
+                       bundle.putSerializable("product", product);
+                       getControler().navigate(R.id.action_wishLishFragment_to_DetailFragment,bundle);
+                   }
+               });
+               break;
+           case Constant.typeLike:
+               listener.onLikeFragment();
+               binding.rvWishlist.setAdapter(viewmodel.wishlistAdapter);
                break;
            case Constant.typeWait:
                listener.onWaitFragment();
@@ -69,24 +88,33 @@ public class WishLishFragment extends BaseFragment<FragWishlistBinding, WishList
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         binding.rvWishlist.setHasFixedSize(true);
         binding.rvWishlist.setLayoutManager(manager);
-        binding.rvWishlist.setAdapter(viewmodel.wishlistAdapter);
+
     }
 
     @Override
     public void ViewCreated() {
-          viewmodel.getArrWishlish().observe(this, new Observer<ArrayList<Product>>() {
+          initRecyclerview();
+          bindTitle();
+          viewmodel.getArrWishlish().observe(this, new Observer<ArrayList<ProductLike>>() {
               @Override
-              public void onChanged(final ArrayList<Product> products) {
-                  viewmodel.wishlistAdapter.setList(products);
+              public void onChanged(ArrayList<ProductLike> productLikes) {
+                  Collections.reverse(productLikes);
+                  viewmodel.wishlistAdapter.setList(productLikes);
                   viewmodel.wishlistAdapter.setCallback(new WishlishCallback() {
                       @Override
-                      public void onItemClick(View view, Product product) {
-
+                      public void onItemClick(View view, ProductLike productLike) {
+                          Product product = new Product(productLike.getId(),productLike.getName(),productLike.getMota(),productLike.getGia(),productLike.getLinkanh(),productLike.getNumberbuy(),productLike.getIdtype());
+                          Bundle bundle = new Bundle();
+                          bundle.putSerializable("product", product);
+                          getControler().navigate(R.id.action_wishLishFragment_to_DetailFragment,bundle);
                       }
 
                       @Override
-                      public void onRemove(View view, Product product) {
-                          viewmodel.wishlistAdapter.removeItem(products.indexOf(product));
+                      public void onRemove(View view, ProductLike productLike) {
+                            int index = viewmodel.wishlistAdapter.getList().indexOf(productLike);
+                            viewmodel.wishlistAdapter.removeItem(index);
+
+                            Constant.getDatabase().getProductLikeDao().delete(productLike);
                       }
                   });
               }
@@ -94,9 +122,5 @@ public class WishLishFragment extends BaseFragment<FragWishlistBinding, WishList
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-       // listener.onResumFragment(this);
-    }
+
 }
